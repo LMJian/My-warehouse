@@ -13,3 +13,43 @@ A,2,3,4,5,6,7,8,9 共9张纸牌排成一个正三角形（A按1计算）。要�
 请你计算并提交该数字。
 
 注意：需要提交的是一个整数，不要提交任何多余内容。
+
+
+package main;
+
+import static java.util.Arrays.fill;
+
+public class Main {
+    public static boolean[] arr=new boolean[10];//判断1到9是否已经被取过
+    public static int[] maze=new int[10];//存放该九位数
+    public static int count=0;
+    public static void main(String[] args){
+        // TODO code application logic here
+        fill(arr,true);//初始化1到9都没被取过
+       dfs(1);
+       System.out.println(count/6);//旋转会出现三种相同的情况   镜像会出现两种相同的情况  所以除以6
+    }
+    public static void dfs(int n){
+        if(n==10)
+        {
+            int n1=maze[1]+maze[2]+maze[3]+maze[4];
+            int n2=maze[4]+maze[5]+maze[6]+maze[7];
+            int n3=maze[7]+maze[8]+maze[9]+maze[1];
+            if(n1==n2&&n2==n3)
+            { 
+                count++;
+                return;
+            }
+        }
+        for(int i=1;i<=9;i++)
+        {
+            if(arr[i])//如果没被取过该数字
+            {
+                maze[n]=i;
+                arr[i]=false;
+                dfs(n+1);
+                arr[i]=true;
+            }
+        }
+    }
+}
