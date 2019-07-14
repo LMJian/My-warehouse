@@ -47,3 +47,43 @@ X X X X X X X X X X X X X X X X X X X X X X X X X X X X X X
 请你推算出：读数最大的电子秤的示数为多少？
 
 注意：需要提交的是一个整数，不要填写任何多余的内容。
+
+package main;
+
+import java.util.Scanner;
+
+public class Main {
+    public static void main(String[] args){
+        // TODO code application logic here
+        Scanner in=new Scanner(System.in);
+        double[][] arr=new double[30][30];
+        for(int i=0;i<29;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                arr[i][j]=in.nextDouble();
+            }
+        }
+        for(int i=0;i<29;i++)
+        {
+            for(int j=0;j<=i;j++)
+            {
+                arr[i+1][j]+=arr[i][j]/2;
+                arr[i+1][j+1]+=arr[i][j]/2;
+            }
+        }
+        double min,max;
+        min=max=arr[29][0];
+        for(int i=1;i<30;i++)
+        {
+            if(max<arr[29][i])
+                max=arr[29][i];
+            if(min>arr[29][i])
+                min=arr[29][i];
+        }
+        long num=(long)(2086458231/min*max);
+        System.out.println(num);
+    }
+}
+
+答案：72665192664
