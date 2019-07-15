@@ -22,7 +22,7 @@ public class Main
 		for(int i=1; i<a.length; i++){
 			for(int j=1; j<a[i].length; j++){
 				if(c1[i-1]==c2[j-1]) {
-					a[i][j] = __________________;  //填空 
+					a[i][j] = __ a[i-1][j-1]+1_;  //填空 
 					if(a[i][j] > max) max = a[i][j];
 				}
 			}
