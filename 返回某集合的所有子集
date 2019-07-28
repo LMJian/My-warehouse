@@ -25,3 +25,4 @@ public class Main {
         Rec(string,start+1,len);       
     }
 }
+ 
