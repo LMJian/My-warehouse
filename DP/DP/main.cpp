@@ -52,8 +52,6 @@ int main()
 	cout << s.minDistance("leetcode", "aleelcard") << endl;
 
 
-
-
 	system("pause");
 	return 0;
 }
