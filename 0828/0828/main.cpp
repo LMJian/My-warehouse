@@ -30,9 +30,15 @@ public:
 	virtual void fun3(){};
 };
 
+void fun(int x = 9)
+{
+	int t = 2;
+	printf("%d\n", x);
+}
 int main()
 {
-	char *str[3] = { "stra", "strb", "strc" };
+	fun();
+	/*char *str[3] = { "stra", "strb", "strc" };
 	char **p = str;
 	int i = 0;
 	while (i < 3)
