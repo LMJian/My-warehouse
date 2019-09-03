@@ -328,7 +328,7 @@ protected:
 	string _colour = "°×É«";
 	string _num = "ÉÂABIT00";
 	Tire _t;
-};*/
+};
 class Base1
 {
 public:
@@ -343,10 +343,43 @@ class Derive :public Base1, public Base2
 {
 public:
 	int _d;
+};*/
+class A
+{
+public:
+	int _a;
 };
+
+//class B : public A 
+class B : virtual public A
+{
+public:
+	int _b;
+};
+
+//class C : public A 
+class C : virtual public A
+{
+public:
+	int _c;
+};
+
+class D : public B, public C
+{
+public:
+	int _d;
+};
+
 int main()
 {
-	Derive d;
+	D d;
+	d.B::_a = 1;
+	d.C::_a = 2;
+	d._b = 3;
+	d._c = 4;
+	d._d = 5;
+	printf("%p\n", d.B::_a);
+	/*Derive d;
 	Base1 *p1 = &d;
 	Base2 *p2 = &d;
 	Derive *p3 = &d;
