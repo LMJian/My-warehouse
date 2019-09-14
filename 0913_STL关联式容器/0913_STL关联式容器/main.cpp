@@ -85,12 +85,13 @@ void TestSet()
 		cout << e << " ";
 	cout << endl;
 }*/
-class Solution{
+/*class Solution{
 public:
 	class Compare
 	{
 	public:
-		bool operator()(const pair<string, int>&left, const pair<string, int>&right)
+		bool operator()(const pair<string, int>&left, \
+			const pair<string, int>&right)
 		{
 			return left.second > right.second;
 		}
@@ -138,11 +139,184 @@ public:
 		}
 		return ret;
 	}
+};*/
+/*template<class T>
+struct BSTNode
+{
+	BSTNode(const T& data = T())
+		:_pLeft(nullptr), _pRight(nullptr), _data(data)
+	{}
+	BSTNode<T>* _pLeft;
+	BSTNode<T>* _pRight;
+	T _data;
 };
+template<class T>
+class BSTree
+{
+	typedef BSTNode<T> Node;
+	typedef Node* PNode;
+public:
+	BSTree()
+		:_pRoot(nullptr)
+	{}
+	~BSTree()
+	{
+		dele(_pRoot);
+	}
+	void dele(PNode pCur)
+	{
+		if (pCur->_pLeft)
+			dele(pCur->_pLeft);
+		if (pCur->_pRight)
+			dele(pCur->_pRight);
+		free(pCur);
+		cout << "1 ";
+	}
+	PNode Find(const T&data)
+	{
+		PNode pCur = _pRoot;
+		while (pCur)
+		{
+			if (data < pCur->_data)
+				pCur = pCur->_pLeft;
+			else if (data>pCur->_data)
+				pCur = pCur->_pRight;
+			else
+				return pCur;
+		}
+		return nullptr;
+	}
+	bool Insert(const T& data)
+	{
+		if (nullptr == _pRoot)
+		{
+			_pRoot = new Node(data);
+			return true;
+		}
+
+		PNode pCur = _pRoot;
+		PNode pParent = nullptr;
+		while (pCur)
+		{
+			pParent = pCur;
+			if (data < pCur->_data)
+				pCur = pCur->_pLeft;
+			else if (data>pCur->_data)
+				pCur = pCur->_pRight;
+			else
+				return false;
+		}
+		pCur = new Node(data);
+		if (data < pParent->_data)
+			pParent->_pLeft = pCur;
+		else
+			pParent->_pRight = pCur;
+		return true;
+	}
+	bool Erase(const T& data)
+	{
+		if (nullptr == _pRoot)
+			return false;
+		PNode pCur = _pRoot;
+		PNode pParent = nullptr;
+		while (pCur)
+		{
+			if (data == pCur->_data)
+				break;
+			else if (data < pCur->_data)
+			{
+				pParent = pCur;
+				pCur = pCur->_pLeft;
+			}
+			else
+			{
+				pParent = pCur;
+				pCur = pCur->_pRight;
+			}
+		}
+		LOOP:
+		if (nullptr == pCur)//不存在
+			return false;
+		if (nullptr == pCur->_pLeft)//已找到该节点，其左子树为空
+		{
+			if (pParent->_pLeft == pCur)//父节点的左子树是该节点
+			{
+				pParent->_pLeft = pCur->_pRight;
+				free(pCur);
+			}
+			else                         //父节点的右子树是该节点
+			{
+				pParent->_pRight = pCur->_pRight;
+				free(pCur);
+			}
+		}
+		else if (nullptr == pCur->_pRight)//右子树为空
+		{
+			if (pParent->_pLeft == pCur)
+			{
+				pParent->_pLeft = pCur->_pLeft;
+				free(pCur);
+			}
+			else
+			{
+				pParent->_pRight = pCur->_pLeft;
+				free(pCur);
+			}
+		}
+		else//左右子树都不为空
+		{
+			PNode pnr = pCur->_pRight;//右子树中最小节点
+			pParent = pCur;
+			while (pnr->_pLeft)
+			{
+				pParent = pnr;
+				pnr = pnr->_pLeft;
+			}
+			pCur->_data = pnr->_data;
+			pCur = pnr;
+			goto LOOP;
+		}
+		return true;
+	}
+	void InOrder();
+private:
+	PNode _pRoot;
+};*/
+template<class T>
+struct AVLTreeNode
+{
+	AVLTreeNode(const T& data)
+		:_pLeft(nullptr), _pRight(nullptr), _pParent(nullptr)
+		, _data(data), _bf(0)
+	{}
+	AVLTreeNode<T>* _pLeft;
+	AVLTreeNode<T>* _pRight;
+	AVLTreeNode<T>* _pParent;
+	T _data;
+	int _bf;
+};
+
 int main()
 {
+
+	/*BSTree<int> tree;
+	int a[] = { 5, 3, 4, 1, 7, 8, 2, 6, 0, 9 };
+	for (auto e : a)
+		tree.Insert(e);
+	BSTNode<int>* pn = tree.Find(3);
+	cout << pn->_data<< " " << pn->_pLeft->_data << " " << pn->_pRight->_data << endl;
+	//cout << tree.Erase(99) << endl;
+	//cout << tree.Erase(7) << endl;
+	tree.~BSTree();
+
+	/*Solution so;
+	string str[] = { "leetcode", "ia", "love", "coding", "i", "love", "coding" };
+	vector<string>vec(str, str + 7);
+	vector<string>ss(so.topKFrequent(vec, 4));
+	for (auto s : ss)
+		cout << s << endl;
 	//TestSet();
-	//TestMap();
+	//TestMap();*/
 
 	system("pause");
 	return 0;
