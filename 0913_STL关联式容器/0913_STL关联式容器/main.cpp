@@ -295,7 +295,100 @@ struct AVLTreeNode
 	T _data;
 	int _bf;
 };
+//template<class T>
+//typedef AVLTreeNode<T>* PNode;
+template<class T>
+bool Insert(const T& data)
+{
+	while (data.pParent)
+	{
+		if (pCur == pParent->_pLeft)
+			pParent->_bf--;
+		else
+			pParent->_bf++;
 
+		if (0 == pParent->_bf)
+			break;
+		else if (1 == pParent->_bf || -1 == pParent->_bf)
+		{
+			pCur = pParent;
+			pParent = pCur->_pParent;
+		}
+		else
+		{
+			if (2 == pParent->_bf)
+			{
+
+			}
+			else
+			{
+
+			}
+		}
+	}
+	return true;
+}
+
+/*void _RotateR(PNode pParent)
+{
+	PNode pSubL = pParent->_pLeft;
+	PNode pSubLR = pSubL->_pRight;
+
+	pParent->_pLeft = pSubLR;
+	if (pSubLR)
+		pSubLR->_pParent = pParent;
+
+	pSubL->_pRight = pParent;
+
+	PNode pPParent = pParent->_pParent;
+
+	pParent->_pParent = pSubL;
+	
+	pSubL->_pParent = pPParent;
+
+	if (NULL == pPParent)
+	{
+		_pRoot = pSubL;
+		pSubL->_pParent = NULL;
+	}
+	else
+	{
+		if (pPParent->_pLeft == pParent)
+			pPParent->_pLeft = pSubL;
+		else
+			pPParent->_pRight = pSubL;
+	}
+	pParent->_bf = pSubL->_bf = 0;
+}
+void _RotateLR(PNode pParent)
+{
+	PNode pSubL = pParent->_pLeft;
+	PNode pSubLR = pSubL->_pRight;
+
+	int bf = pSubLR->_bf;
+
+	_RotateL(pParent->_pLeft);
+
+	_RotateR(pParent);
+
+	if (1 == bf)
+		pSubL->_bf = -1;
+	else if (-1 == bf)
+		pParent->_bf = 1;
+}
+int _Height(PNode pRoot);
+bool _IsBalanceTree(PNode pRoot)
+{
+	if (nullptr == pRoot)
+		return true;
+	int leftHeight = _Height(pRoot->_pLeft);
+	int rightHeight = _Height(pRoot->_pRight);
+	int diff = rightHeight - leftHeight;
+
+	if (diff != pRoot->_bf || (diff > 1 || diff < -1))
+		return false;
+	return _IsBalanceTree(pRoot->_pLeft) && _IsBalanceTree(pRoot->_pRight);
+}*/
 int main()
 {
 
