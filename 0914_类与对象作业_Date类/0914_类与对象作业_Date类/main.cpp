@@ -58,6 +58,7 @@ public:
 	Date operator+(int days)const
 	{
 		Date da(*this);
+		da._day = 12;          /*--------------------*/
 		for (int i = 0; i < days; i++)
 			da++;
 		return da;
@@ -204,10 +205,11 @@ private:
 };
 int main()
 {
-	Date d1(2015, 12, 31);
+	/*Date d1(2015, 12, 31);
 	Date d2(2015, 1, 1);
+	Date d3(d1);
+	d3._day = -1;
 
-	Date d3 = d1 -365;
 	//cout << (d1 - d2) << endl;
 	//d1++;2
 	//d2--;
@@ -224,8 +226,6 @@ int main()
 	Date da3 = d1++;
 	Date da4 = ++d1;
 	cout << (d1 - d2) << endl;*/
-	d1++;
-	d2--;
 
 
 	system("pause");
