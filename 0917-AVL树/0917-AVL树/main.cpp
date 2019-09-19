@@ -138,11 +138,10 @@ public:
 	{
 		PNode pParent = root->_pRight;
 		PNode pCur = pParent->_pLeft;
+
 		root->_pRight = pCur;
-		if (pCur != nullptr)
+		if (pCur!=nullptr)
 			pCur->_pParent = root;
-		root->_pParent = pParent;
-		pParent->_pLeft = root;
 
 		if (root->_pParent == nullptr)
 		{
@@ -162,6 +161,9 @@ public:
 				pParent->_pParent = root->_pParent;
 			}
 		}
+		root->_pParent = pParent;
+		pParent->_pLeft = root;
+
 		root->_bf = pParent->_bf = 0;
 	}
 	void Right(PNode root)//右单旋
@@ -171,8 +173,7 @@ public:
 		root->_pLeft = pCur;
 		if (pCur != nullptr)
 			pCur->_pParent = root;
-		root->_pParent = pParent;
-		pParent->_pRight = root;
+		
 		if (root->_pParent == nullptr)
 		{
 			pParent->_pParent = nullptr;
@@ -191,6 +192,9 @@ public:
 				pParent->_pParent = root->_pParent;
 			}
 		}
+		root->_pParent = pParent;
+		pParent->_pRight = root;
+
 		root->_bf = pParent->_bf = 0;
 	}
 	void show()
@@ -225,17 +229,41 @@ public:
 		Right(pParent->_pRight);
 		Left(pParent);
 		if (1 == bf)
-			pSubR->_bf = 1;
-		else if (-1 == bf)
 			pParent->_bf = -1;
+		else if (-1 == bf)
+			pSubR->_bf = 1;
 	}
 
-	int _Height(PNode pRoot);
+	int _Height(PNode pRoot)
+	{
+		if (pRoot == nullptr)
+			return 0;
+		count++;
+		if (count > max)
+			max = count;
+		if (pRoot->_pLeft != nullptr)
+		{
+			_Height(pRoot->_pLeft);
+			count--;
+		}
+		if (pRoot->_pRight != nullptr)
+		{
+			_Height(pRoot->_pRight);
+			count--;
+		}
+		return max;
+	}
+	bool IsBalanceTree()
+	{
+		return _IsBalanceTree(_pRoot);
+	}
 	bool _IsBalanceTree(PNode pRoot)//验证是否是AVL树
 	{
 		if (nullptr == pRoot)
 			return true;
+		max = 0;count = 0;
 		int leftHeight = _Height(pRoot->_pLeft);
+		max = 0; count = 0;
 		int rightHeight = _Height(pRoot->_pRight);
 		int diff = rightHeight - leftHeight;
 
@@ -245,7 +273,11 @@ public:
 	}
 private:
 	PNode _pRoot;
+	static int count;//记录当前所在层数
+	static int max;//记录count历史最大值
 }; 
+int AVLTree<int>::count = 0;
+int AVLTree<int>::max = 0;
 
 AVLTree<int> tree;
 int main()
@@ -255,6 +287,7 @@ int main()
 	for (auto e : a)
 		tree.Insert(e);
 	tree.show();
+	cout<<tree.IsBalanceTree() << endl;
 
 	system("pause");
 	return 0;
