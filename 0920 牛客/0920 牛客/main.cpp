@@ -5,7 +5,10 @@ using namespace std;
 
 int main()
 {
-
+	char str = '\141';
+	cout << str << endl;
+	/*char s[] = "\\141\141abc\t";
+	cout << strlen(s) << endl;
 	/*int i = 100;
 	cout.unsetf(ios::dec);
 	cout.setf(ios::hex);
