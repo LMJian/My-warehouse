@@ -1,4 +1,4 @@
-﻿生成启动时间为 2019/9/21 21:33:57。
+﻿生成启动时间为 2019/9/21 23:38:12。
      1>项目“C:\Users\LMJian\Documents\Visual Studio 2013\Github\My-warehouse\0921C++内存管理\0921C++内存管理\0921C++内存管理.vcxproj”在节点 2 上(Rebuild 个目标)。
      1>ClCompile:
          D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\x86_amd64\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /Zi /nologo /W3 /WX- /sdl /Od /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"x64\Debug\\" /Fd"x64\Debug\vc120.pdb" /Gd /TP /errorReport:prompt main.cpp
@@ -10,4 +10,4 @@
 
 生成成功。
 
-已用时间 00:00:01.12
+已用时间 00:00:02.82

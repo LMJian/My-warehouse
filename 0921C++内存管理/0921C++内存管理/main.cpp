@@ -156,9 +156,13 @@ void Test2()
 	delete p6;     //delete释放new[]创建的运行时会出错
 	_CrtDumpMemoryLeaks();
 }
+
 int main()
 {
-	Test2();
+
+	/*void* p = new char[0xfffffffful];
+	cout << p << endl;
+	/*Test2();
 	/*StackOnly* s1 = &(StackOnly::CreateObject());
 	s1->test();
 	//test s1;
