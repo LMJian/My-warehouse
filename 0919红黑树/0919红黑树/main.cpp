@@ -21,6 +21,7 @@ struct RBTreeNode
 	ValueType _data;
 	Color _color;
 };
+
 template<class ValueType>
 class RBTree
 {
@@ -35,6 +36,7 @@ public:
 	~RBTree()
 	{
 		dele(_pHead->_pParent);
+		free(_pHead);
 	}
 	void dele(PNode pCur)
 	{
@@ -47,21 +49,20 @@ public:
 		free(pCur);
 		cout << "1  ";
 	}
+
 	bool Insert(const ValueType& data)
 	{
 		PNode& pRoot = GetRoot();//获取根节点
+		PNode pCur = pRoot;
+		PNode pParent = nullptr;
 		if (nullptr == pRoot)//根节点为空
 		{
 			pRoot = new Node(data, BLACK);
-
 			pRoot->_pParent = _pHead;
 			_pHead->_pParent = pRoot;
-			return true;
 		}
 		else
 		{
-			PNode pCur = pRoot;
-			PNode pParent = nullptr;
 			while (pCur)
 			{
 				pParent = pCur;
@@ -83,77 +84,85 @@ public:
 				pParent->_pRight = pCur;
 				pCur->_pParent = pParent;
 			}
+		}//新节点插入完成
 
-			PNode pGrand;//祖父节点
-			PNode pUncle;
-			while (pParent!=_pHead)
+		// 1.新节点插入后，如果其双亲节点的颜色为空色，则违反性质3：
+		//不能有连在一起的红色结点 
+		//2.插入的新节点默认为红色
+		while (pParent&&RED == pParent->_color)
+		{
+			//此时grandFather一定存在且为黑，因为pParent为红，不能两个连续为红        
+			//因为pParent存在，且不是黑色节点，
+			//则pParent一定不是根，则其一定有双亲
+			PNode grandfather = pParent->_pParent;
+			// 先讨论左侧情况
+			if (pParent == grandfather->_pLeft)
 			{
-				pParent = pCur->_pParent;
-				pGrand = pParent->_pParent;//祖父节点
-				if (pGrand->_pLeft == pParent)
-					pUncle = pGrand->_pRight;//叔叔节点
-				else
-					pUncle = pGrand->_pLeft;
-
-				if ((pCur->_color == pParent->_color == RED) && \
-					(pGrand->_color == BLACK) && \
-					(pUncle&&pUncle->_color == RED))//情况一
+				PNode unclue = grandfather->_pRight;
+				//情况一：叔叔节点存在，且为红
+				if (unclue&&RED == unclue->_color)
 				{
-					pUncle->_color = pParent->_color = BLACK;
-					pGrand->_color = RED;
-
-					pCur = pGrand;
+					pParent->_color = BLACK;
+					unclue->_color = BLACK;
+					grandfather->_color = RED;
+					pCur = grandfather;
+					pParent = pCur->_pParent;
 				}
-				if ((pCur->_color == pParent->_color == RED) && \
-					(pGrand->_color == BLACK) && \
-					(!pUncle || pUncle->_color == BLACK))//情况三
+				else//叔叔节点不存在，或者叔叔节点存在且为黑
 				{
-					if (pGrand->_pLeft == pParent&&pParent->_pRight == pCur)
-						//左单旋转
+					if (pCur == pParent->_pRight)//情况三
 					{
 						Left(pParent);
+
+						PNode pt = pParent;
+						pParent = pCur;
+						pCur = pt;
 					}
-					else if (pGrand->_pRight == pParent&&pParent->_pLeft == pCur)
+					//情况二
+					grandfather->_color = RED;
+					pParent->_color = BLACK;
+					Right(grandfather); //pParent和pCur相对位置没有改变
+					                    //不需要交换位置
+				}
+			}
+			else
+			{
+				PNode unclue = grandfather->_pLeft;
+				//情况一：叔叔节点存在，且为红
+				if (unclue&&RED == unclue->_color)
+				{
+					pParent->_color = BLACK;
+					unclue->_color = BLACK;
+					grandfather->_color = RED;
+					pCur = grandfather;
+					pParent = pCur->_pParent;
+				}
+				else//叔叔节点不存在，或者叔叔节点存在且为黑
+				{
+					if (pCur == pParent->_pLeft)//情况三
 					{
 						Right(pParent);
+
+						PNode pt = pParent;
+						pParent = pCur;
+						pCur = pt;
 					}
-				}
-				if ((pCur->_color == pParent->_color == RED) && \
-					(pGrand->_color == BLACK) && \
-					(!pUncle || pUncle->_color == BLACK))//情况二
-				{
-					if (pGrand->_pLeft == pParent&&pParent->_pLeft == pCur)
-						//右单旋转
-					{
-						Right(pGrand);
-					}
-					else if (pGrand->_pRight == pParent&&pParent->_pRight == pCur)
-					{
-						Left(pGrand);
-					}
+					//情况二
+					grandfather->_color = RED;
 					pParent->_color = BLACK;
-					pGrand->_color = RED;
-					break;
+					Left(grandfather);
 				}
-				break;
-				pCur = pParent;
 			}
-			
 		}
-		pRoot->_color = BLACK;
-		_pHead->_pLeft = LeftMost();
-		_pHead->_pRight = RightMost();
 		return true;
 	}
 	void Left(PNode root)//左单旋
 	{
 		PNode pParent = root->_pRight;
 		PNode pCur = pParent->_pLeft;
-
 		root->_pRight = pCur;
 		if (pCur != nullptr)
 			pCur->_pParent = root;
-
 		if (root->_pParent == nullptr)
 		{
 			pParent->_pParent = nullptr;
@@ -174,8 +183,6 @@ public:
 		}
 		root->_pParent = pParent;
 		pParent->_pLeft = root;
-
-		//root->_bf = pParent->_bf = 0;
 	}
 	void Right(PNode root)//右单旋
 	{
@@ -184,7 +191,6 @@ public:
 		root->_pLeft = pCur;
 		if (pCur != nullptr)
 			pCur->_pParent = root;
-
 		if (root->_pParent == nullptr)
 		{
 			pParent->_pParent = nullptr;
@@ -205,8 +211,6 @@ public:
 		}
 		root->_pParent = pParent;
 		pParent->_pRight = root;
-
-		//root->_bf = pParent->_bf = 0;
 	}
 	bool IsValidRBTree()
 	{
@@ -279,7 +283,8 @@ private:
 RBTree<int> tree;
 int main()
 {
-	/*int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
+
+	int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
 
 	for (auto e : a)
 		tree.Insert(e);
