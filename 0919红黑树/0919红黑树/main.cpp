@@ -86,7 +86,7 @@ public:
 			}
 		}//新节点插入完成
 
-		// 1.新节点插入后，如果其双亲节点的颜色为空色，则违反性质3：
+		// 1.新节点插入后，如果其双亲节点的颜色为红色，则违反性质3：
 		//不能有连在一起的红色结点 
 		//2.插入的新节点默认为红色
 		while (pParent&&RED == pParent->_color)
@@ -112,20 +112,20 @@ public:
 				{
 					if (pCur == pParent->_pRight)//情况三
 					{
-						Left(pParent);
-
-						PNode pt = pParent;
-						pParent = pCur;
-						pCur = pt;
+						if (pParent != _pHead)
+						{
+							Left(pParent);
+							swap(pParent, pCur);
+						}
 					}
 					//情况二
 					grandfather->_color = RED;
 					pParent->_color = BLACK;
-					Right(grandfather); //pParent和pCur相对位置没有改变
-					                    //不需要交换位置
+					if (grandfather != _pHead)
+						Right(grandfather);
 				}
 			}
-			else
+			else//pParent是右孩子的情况下
 			{
 				PNode unclue = grandfather->_pLeft;
 				//情况一：叔叔节点存在，且为红
@@ -141,16 +141,17 @@ public:
 				{
 					if (pCur == pParent->_pLeft)//情况三
 					{
-						Right(pParent);
-
-						PNode pt = pParent;
-						pParent = pCur;
-						pCur = pt;
+						if (pParent != _pHead)
+						{
+							Right(pParent);
+							swap(pParent, pCur);
+						}
 					}
 					//情况二
 					grandfather->_color = RED;
 					pParent->_color = BLACK;
-					Left(grandfather);
+					if (grandfather != _pHead)
+						Left(grandfather);
 				}
 			}
 		}
@@ -163,9 +164,9 @@ public:
 		root->_pRight = pCur;
 		if (pCur != nullptr)
 			pCur->_pParent = root;
-		if (root->_pParent == nullptr)
+		if (root->_pParent == _pHead)
 		{
-			pParent->_pParent = nullptr;
+			pParent->_pParent = _pHead;
 			_pHead->_pParent = pParent;
 		}
 		else
@@ -191,9 +192,9 @@ public:
 		root->_pLeft = pCur;
 		if (pCur != nullptr)
 			pCur->_pParent = root;
-		if (root->_pParent == nullptr)
+		if (root->_pParent == _pHead)
 		{
-			pParent->_pParent = nullptr;
+			pParent->_pParent = _pHead;
 			_pHead->_pParent = pParent;
 		}
 		else
@@ -256,6 +257,18 @@ public:
 		return _IsValidRBTree(pRoot->_pLeft, k, blackCount) &&
 			_IsValidRBTree(pRoot->_pRight, k, blackCount);
 	}
+	void show()
+	{
+		_show(_pHead->_pParent);
+	}
+	void _show(PNode pt)
+	{
+		if (pt->_pLeft != nullptr)
+			_show(pt->_pLeft);
+		if (pt->_pRight != nullptr)
+			_show(pt->_pRight);
+		printf("结点：%d 颜色：%d \n", pt->_data, pt->_color);
+	}
 private:
 	PNode& GetRoot()//获取根节点
 	{
@@ -287,7 +300,12 @@ int main()
 	int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
 
 	for (auto e : a)
+	{
 		tree.Insert(e);
+		tree.show();
+		cout << endl;
+	}
+		
 
 	cout << tree.IsValidRBTree() << endl;
 	//cout << "12" << endl;*/
