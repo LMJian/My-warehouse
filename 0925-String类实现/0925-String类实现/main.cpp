@@ -2,7 +2,7 @@
 #include<iostream>
 using namespace std;
 
-class string1
+/*class string1
 {
 public:
 	string1(const char *s = "")
@@ -70,12 +70,12 @@ public:
 	}
 private:
 	char *_str;
-};
+};*/
 
-class string3
+class String
 {
 public:
-	string3(const char* s="")
+	String(const char* s="")
 		:_count(new int(1))
 	{
 		if (s == nullptr)
@@ -83,13 +83,33 @@ public:
 		_str = new char[strlen(s) + 1];
 		strcpy(_str, s);
 	}
-	string3(const string3& s)
+	String(const String& s)
 		:_count(s._count)
 	{
 		_str = s._str;
 		++(*_count);
 	}
-	string3& operator=(const string3& s)
+	char& operator[](size_t index)
+	{
+		if (_str == nullptr || index > strlen(_str))
+		{
+			static char nullchar = 0;
+			return nullchar;
+		}
+		if (*_count == 1)
+			return *(_str + index);
+		char *str_t = new char[strlen(_str) + 1];
+		strcpy(str_t, _str);
+		if (--(*_count) == 0)
+		{
+			delete _count;
+			delete _str;
+		}
+		_count = new int(1);
+		_str = str_t;
+		return *(_str + index);
+	}
+	String& operator=(const String& s)
 	{
 		if (--(*_count) == 0)
 		{
@@ -101,7 +121,7 @@ public:
 		++(*_count);
 		return *this;
 	}
-	~string3()
+	~String()
 	{
 		--(*_count);
 		if (*_count == 0)
@@ -114,21 +134,21 @@ private:
 	char *_str;
 	int *_count;
 };
+
 void test()
 {
-	string3 s1("123");
-	string3 s2(s1);
-	string3 s3("456");
-	string3 s4(s3);
-	s3 = s1;
-	s4 = s2;
+	String s1("123");
+	String s2(s1);
+	//cout << s1 << "\n" << &s2 << endl;
+	s1[1] = 4;
+	//cout << &s1 << "\n" << &s2 << endl;
 }
 int main()
 {
+	//cout << strlen(nullptr) << endl;
 	test();
 	//new int;
 	_CrtDumpMemoryLeaks();
-
 
 	system("pause");
 	return 0;
