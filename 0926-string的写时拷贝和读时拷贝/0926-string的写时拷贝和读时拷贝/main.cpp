@@ -91,7 +91,7 @@ void test()
 
 int main()
 {
-	String s1("123456");
+	/*String s1("123456");
 	String s3(s1);
 	String s2(s1);
 	s2[1] = 'x';
