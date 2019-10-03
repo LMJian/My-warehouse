@@ -18,8 +18,7 @@ int main()
       printf("异常终止%d\n",status&0x7f);
     else{
       printf("正常终止：%d\n",(status>>8)&0xff);
-    }
-    
+    }   
   }
   else if(ret==0)
   {
