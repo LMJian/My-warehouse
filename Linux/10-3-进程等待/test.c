@@ -10,7 +10,7 @@ int main()
   pid_t ret=fork();
   if(ret>0)
   {
-    printf("father %d\n",getpid());
+    printf("this is test for wait\n");
     int status=0;
     pid_t result=wait(&status);
     printf("result %d,status %d\n",result,status);
@@ -18,21 +18,17 @@ int main()
       printf("异常终止%d\n",status&0x7f);
     else{
       printf("正常终止：%d\n",(status>>8)&0xff);
-    }   
+    }
   }
   else if(ret==0)
   {
-    int count=3;
-    while(count>0)
-    {
-      printf("child %d\n",getpid());
-      sleep(1);
-      --count;
-    }
-    exit(3);
+    printf("child is run,pid is :%d\n",getpid());
+    sleep(5);
+    exit(257);
   }
   else{
-    perror("fork");
+    printf("fork error\n");
+    return 1;
   }
   /*pid_t pid;
   if((pid=fork())==-1)
