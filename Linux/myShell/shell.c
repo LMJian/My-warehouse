@@ -43,9 +43,28 @@ void do_exec()
     chdir(arr[1]);
     return;
   }
+  
   pid_t id=fork();
   if(id==0)
   {
+    int i;
+    int fd=1;
+    for(i=0;i<len;i++)
+    {
+      if(strcmp(arr[i],">")==0)
+      {
+        fd=open(arr[i+1],O_WRONLY|O_CREAT|O_TRUNC,0664);
+        dup2(fd,1);
+        arr[i]=NULL;
+        break;
+      }else if(strcmp(arr[i],">>")==0)
+      {
+        fd=open(arr[i+1],O_WRONLY|O_CREAT|O_APPEND,0664);
+        dup2(fd,1);
+        arr[i]=NULL;
+        break;
+      }
+    }
     execvp(arr[0],arr);
     exit(-1);
   }
