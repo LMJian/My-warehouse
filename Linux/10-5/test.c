@@ -2,7 +2,13 @@
 
 int main()
 {
-  char *file="./tmp.txt";
+  const char *msg="hello fwrite\n";
+  fwrite(msg,strlen(msg),1,stdout);
+
+  printf("hello printf\n");
+  fprintf(stdout,"hello fprintf\n");
+  return 0;
+  /*char *file="./tmp.txt";
   FILE *fp=fopen(file,"w+");
   if(fp==NULL)
   {
@@ -20,6 +26,6 @@ int main()
     printf("end of file!!\n");
   }
   printf("buf:[%d-%s]\n",ret,buf);
-  fclose(fp);
+  fclose(fp);*/
   return 0;
 }
