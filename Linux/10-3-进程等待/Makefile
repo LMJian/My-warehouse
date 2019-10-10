@@ -1,5 +1,6 @@
-test:test.c 
-	gcc test.c -g -o test
+test:test.c
+	gcc $^ -o $@
+
 .PHONY:clean
 clean:
 	rm test
