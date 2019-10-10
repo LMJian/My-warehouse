@@ -1,0 +1,16 @@
+﻿生成启动时间为 2019/8/16 22:54:58。
+     1>项目“C:\Users\LMJian\documents\visual studio 2013\Projects\test\test\test.vcxproj”在节点 2 上(Rebuild 个目标)。
+     1>ClCompile:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Program Files (x86)\Visual Leak Detector\include" /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D _MBCS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
+         main.cpp
+     1>c:\users\lmjian\documents\visual studio 2013\projects\test\test\main.cpp(86): warning C4101: “stT1”: 未引用的局部变量
+     1>c:\users\lmjian\documents\visual studio 2013\projects\test\test\main.cpp(88): warning C4101: “stT3”: 未引用的局部变量
+     1>c:\users\lmjian\documents\visual studio 2013\projects\test\test\main.cpp(87): warning C4101: “stT2”: 未引用的局部变量
+       Link:
+         D:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\LMJian\documents\visual studio 2013\Projects\test\Debug\test.exe" /INCREMENTAL /NOLOGO /LIBPATH:"C:\Program Files (x86)\Visual Leak Detector\lib\Win32" kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\LMJian\documents\visual studio 2013\Projects\test\Debug\test.pdb" /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\LMJian\documents\visual studio 2013\Projects\test\Debug\test.lib" /MACHINE:X86 Debug\main.obj
+         test.vcxproj -> C:\Users\LMJian\documents\visual studio 2013\Projects\test\Debug\test.exe
+     1>已完成生成项目“C:\Users\LMJian\documents\visual studio 2013\Projects\test\test\test.vcxproj”(Rebuild 个目标)的操作。
+
+生成成功。
+
+已用时间 00:00:00.83
