@@ -276,8 +276,8 @@ void TestVector3()
 
 int main()
 {
-	TestVector();
-	TestVector2();
+	//TestVector();
+	//TestVector2();
 	TestVector3();
 	return 0;
 }
