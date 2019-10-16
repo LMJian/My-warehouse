@@ -14,13 +14,13 @@ int main()
     //perror("mkfifo errno");
     //exit(-1);
   }
-  int fd=open("a.txt",O_RDONLY);
+  int fd=open("a.txt",O_RDONLY); 
   if(fd<0)
   {
     perror("open a.txt errno");
     exit(-1);
   }
-  int mkfd=open("p2",O_WRONLY);
+  int mkfd=open("p2",O_RDWR);
   if(mkfd<0)
   {
     perror("open p2 errno");

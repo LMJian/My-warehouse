@@ -5,7 +5,7 @@
 #include<fcntl.h>
 #include<sys/types.h>
 #include<sys/stat.h>
-#include<execinfo.h>
+
 char str[100]={0};
 char *maze[100]={0};
 int len=0;
