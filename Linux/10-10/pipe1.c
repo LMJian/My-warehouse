@@ -20,7 +20,7 @@ int main()
   {
     close(pipefd[0]);
     write(pipefd[1],"hello",5);
-    close(pipefd[1]);
+    //close(pipefd[1]);
     exit(EXIT_SUCCESS);
   }
 
