@@ -85,11 +85,46 @@ public:
 };
 
 
+class Solution {
+public:
+	int evalRPN(vector<string>& tokens) {
+		stack<int>sa;
+		for (size_t i = 0; i < tokens.size(); i++)
+		{
+			string str = tokens[i];
+			if (str == "+" || str == "-" || str == "*" || str == "/")
+			{
+				int right = sa.top();
+				sa.pop();
+				int left = sa.top();
+				sa.pop();
+				char ch = str[0];
+				switch (ch)
+				{
+				case '+':sa.push(left + right);
+					break;
+				case '-':sa.push(left - right);
+					break;
+				case '*':sa.push(left*right);
+					break;
+				case '/':sa.push(left / right);
+					break;
+				}
+			}
+			else
+			{
+				const char *tmp = str.c_str();
+				int num = atoi(tmp);
+				sa.push(num);
+			}
+		}
+		return sa.top();
+	}
+};
+
 int main()
 {
-
-
-
+	
 	/*MinStack ma;
 	cout << ma.getMin() << endl;
 	/*ma.push(-2);
