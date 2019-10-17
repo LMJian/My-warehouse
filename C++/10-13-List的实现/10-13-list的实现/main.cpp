@@ -95,7 +95,7 @@ namespace bite
 	template<class T>
 	class list_iterator
 	{
-		typedef struct Node<T> Node;
+		typedef Node<T> Node;
 		typedef list_iterator<T> shef;
 	public:
 		list_iterator(Node *ptr)
@@ -116,7 +116,8 @@ namespace bite
 		}
 		shef operator ++(T)
 		{
-			shef tmp(_ptr);
+			shef tmp(*this);
+			//shef tmp(_ptr);
 			_ptr = _ptr->_pNext;
 			return tmp;
 		}
@@ -150,12 +151,16 @@ namespace bite
 		list_riterator(Node *ptr)
 			:_it(ptr)
 		{}
+		/*list_riterator(iterator it)
+			:_it(it)
+		{}*/
 		T& operator *()
 		{
 			auto it = _it;
 			--it;
 			return *it;
 		}
+		
 		T* operator ->()
 		{
 			return &(operator *());
@@ -197,8 +202,9 @@ namespace bite
 	template<class T>
 	class list
 	{
-		typedef struct Node<T> Node;
+		typedef Node<T> Node;
 		typedef list_iterator<T> iterator;
+		typedef const list_iterator<T> const_iterator;
 		typedef list_riterator<iterator, T> riterator;
 	public:
 		list()
@@ -224,23 +230,23 @@ namespace bite
 		list(const list<T>& L)
 		{
 			CreateHead();
-			Node *pt = L._pHead->_pNext;
+			/*Node *pt = L._pHead->_pNext;
 			while (pt != L._pHead)
 			{
 				push_back(pt->_data);
 				pt = pt->_pNext;
-			}
-			/*auto it = L.begin();
+			}*/
+			iterator it = L.begin();
 			while (it != L.end())
 			{
 				push_back(*it);
 				++it;
-			}*/
+			}
 		}
 
 
-		// L1 = L2;
-		list<T> operator=(const list<T> L)
+		// L1 =&L2;
+		list<T>& operator=(const list<T>& L)
 		{
 			if (this != &L)
 			{
@@ -265,7 +271,15 @@ namespace bite
 		{
 			return iterator(_pHead->_pNext);
 		}
+		iterator begin()const 
+		{
+			return iterator(_pHead->_pNext);
+		}
 		iterator end()
+		{
+			return iterator(_pHead);
+		}
+		iterator end()const 
 		{
 			return iterator(_pHead);
 		}
@@ -277,9 +291,9 @@ namespace bite
 		{
 			return riterator(_pHead->_pNext);
 		}
-		int size()
+		size_t size()const
 		{
-			int count = 0;
+			size_t count = 0;
 			auto it = begin();
 			while (it != end())
 			{
@@ -289,7 +303,7 @@ namespace bite
 			return count;
 		}
 
-		bool empty()
+		bool empty()const 
 		{
 			return _pHead->_pNext == _pHead;
 		}
@@ -397,8 +411,9 @@ void TestList1()
 
 	vector<int> v{ 1, 2, 3, 4, 5, 6, 7, 8, 9, 0 };
 	bite::list<int> L3(v.begin(), v.end());
+	
 	bite::list<int> L4(L3);
-
+	
 	auto it = L2.begin();
 	while (it != L2.end())
 	{
@@ -454,10 +469,18 @@ void TestList2()
 
 void TestList3()
 {
+
 	bite::list<int> L;
+	
 	L.push_back(1);
 	L.push_back(2);
 	L.push_back(3);
+	bite::list<int> L2(L);
+
+	auto it = L.begin();
+	//cout << *it << endl;
+	
+	auto itt = it++;
 
 	L.resize(10, 5);
 	for (auto e : L)
@@ -472,8 +495,8 @@ void TestList3()
 
 int main()
 {
-	TestList1();
-	TestList2();
+	//TestList1();
+	//TestList2();
 	TestList3();
 	//new int();
 	_CrtDumpMemoryLeaks();
