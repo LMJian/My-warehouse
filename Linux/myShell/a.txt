@@ -1,6 +1,0 @@
-.
-..
-a.txt
-makefile
-shell
-shell.c
