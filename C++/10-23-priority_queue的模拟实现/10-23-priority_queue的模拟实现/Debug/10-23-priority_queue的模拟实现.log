@@ -1,0 +1,22 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\my-warehouse\c++\10-23-priority_queue的模拟实现\10-23-priority_queue的模拟实现\main.cpp(68): warning C4018: “<”: 有符号/无符号不匹配
+  c:\users\administrator\desktop\github\my-warehouse\c++\10-23-priority_queue的模拟实现\10-23-priority_queue的模拟实现\main.cpp(66): note: 编译 类 模板 成员函数 "void priority_queue<int,std::vector<T,std::allocator<_Ty>>,std::less<_Ty>>::makeDown(int)" 时
+          with
+          [
+              T=int,
+              _Ty=int
+          ]
+  c:\users\administrator\desktop\github\my-warehouse\c++\10-23-priority_queue的模拟实现\10-23-priority_queue的模拟实现\main.cpp(35): note: 参见对正在编译的函数 模板 实例化“void priority_queue<int,std::vector<T,std::allocator<_Ty>>,std::less<_Ty>>::makeDown(int)”的引用
+          with
+          [
+              T=int,
+              _Ty=int
+          ]
+  c:\users\administrator\desktop\github\my-warehouse\c++\10-23-priority_queue的模拟实现\10-23-priority_queue的模拟实现\main.cpp(90): note: 参见对正在编译的 类 模板 实例化 "priority_queue<int,std::vector<T,std::allocator<_Ty>>,std::less<_Ty>>" 的引用
+          with
+          [
+              T=int,
+              _Ty=int
+          ]
+c:\users\administrator\desktop\github\my-warehouse\c++\10-23-priority_queue的模拟实现\10-23-priority_queue的模拟实现\main.cpp(70): warning C4018: “<”: 有符号/无符号不匹配
+  10-23-priority_queue的模拟实现.vcxproj -> C:\Users\Administrator\Desktop\Github\My-warehouse\C++\10-23-priority_queue的模拟实现\Debug\10-23-priority_queue的模拟实现.exe
