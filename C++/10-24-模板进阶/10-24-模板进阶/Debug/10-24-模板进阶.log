@@ -1,0 +1,6 @@
+﻿  Add.cpp
+  Add.h
+  main.cpp
+  正在生成代码...
+Debug\Add.obj : warning LNK4042: 对象被多次指定；已忽略多余的指定
+  10-24-模板进阶.vcxproj -> C:\Users\Administrator\source\repos\10-24-模板进阶\Debug\10-24-模板进阶.exe
