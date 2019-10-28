@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "二叉树的最近公共祖先", "二叉树的最近公共祖先\二叉树的最近公共祖先.vcxproj", "{B34BCE97-AD07-48A5-AF0A-847AADA600BB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Debug|x64.ActiveCfg = Debug|x64
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Debug|x64.Build.0 = Debug|x64
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Debug|x86.ActiveCfg = Debug|Win32
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Debug|x86.Build.0 = Debug|Win32
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Release|x64.ActiveCfg = Release|x64
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Release|x64.Build.0 = Release|x64
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Release|x86.ActiveCfg = Release|Win32
+		{B34BCE97-AD07-48A5-AF0A-847AADA600BB}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CDB4F124-1B5F-4E12-9D1C-05BC911E1286}
+	EndGlobalSection
+EndGlobal
