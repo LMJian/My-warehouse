@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\my-warehouse\c++\11-9-c++多态学习\11-9-c++多态学习\main.cpp(199): warning C4477: “printf”: 格式字符串“%0x”需要类型“unsigned int”的参数，但可变参数 2 拥有了类型“VFPTR”
+c:\users\administrator\desktop\github\my-warehouse\c++\11-9-c++多态学习\11-9-c++多态学习\main.cpp(215): warning C4477: “printf”: 格式字符串“%0x”需要类型“unsigned int”的参数，但可变参数 1 拥有了类型“int *”
+  11-9-C++多态学习.vcxproj -> C:\Users\Administrator\Desktop\Github\My-warehouse\C++\11-9-C++多态学习\Debug\11-9-C++多态学习.exe
