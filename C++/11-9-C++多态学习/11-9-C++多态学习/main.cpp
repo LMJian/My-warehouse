@@ -201,9 +201,15 @@ void Print(VFPTR *arr)
 	}
 }
 
+int ret = 0;
 int main()
 {
-	D d;
+	A a;
+	const char* p = "hello world";
+	printf("全局变量--->%p\n", &ret);
+	printf("常量--->%p\n", p);
+	printf("虚表--->%p\n", *(int*)&a);
+	/*D d;
 
 	VFPTR* vfptr1 = (VFPTR*)(*(int*)&d);//第一个虚表
 	VFPTR* vfptr2 = (VFPTR*)(*(((int*)&d) + 3));//第二个虚表
@@ -213,7 +219,7 @@ int main()
 	Print(vfptr2);
 
 	printf("A::Func1()地址：%0x\n", (int*)A_Func1);
-	(*A_Func1)();
+	(*A_Func1)();*/
 
 
 
