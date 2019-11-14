@@ -1,0 +1,6 @@
+﻿  main.c
+c:\users\administrator\source\repos\11-14-c语言代码练习\11-14-c语言代码练习\main.c(19): warning C4305: “初始化”: 从“double”到“float”截断
+c:\users\administrator\source\repos\11-14-c语言代码练习\11-14-c语言代码练习\main.c(22): warning C4305: “初始化”: 从“double”到“float”截断
+c:\users\administrator\source\repos\11-14-c语言代码练习\11-14-c语言代码练习\main.c(26): warning C4305: “初始化”: 从“double”到“float”截断
+c:\users\administrator\source\repos\11-14-c语言代码练习\11-14-c语言代码练习\main.c(27): warning C4305: “初始化”: 从“double”到“float”截断
+  11-14-C语言代码练习.vcxproj -> C:\Users\Administrator\source\repos\11-14-C语言代码练习\Debug\11-14-C语言代码练习.exe
