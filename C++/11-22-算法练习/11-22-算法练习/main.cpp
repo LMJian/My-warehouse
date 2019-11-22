@@ -1,0 +1,1 @@
+#include <iostream> #include <vector> #include <algorithm> using namespace std; //计算约数，求除了1和本身的约数 void divisorNum(int n, vector<int> &divNum) { for (int i = 2; i <= sqrt(n); i++) { if (n%i == 0) { divNum.push_back(i); //非平方数时还有另一个数也要加入 if (n / i != i) divNum.push_back(n / i); }
