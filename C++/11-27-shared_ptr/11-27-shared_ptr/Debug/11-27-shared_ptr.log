@@ -1,37 +1,46 @@
 ﻿  main.cpp
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C2143: 语法错误: 缺少“;”(在“<”的前面)
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C2238: 意外的标记位于“;”之前
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C2143: 语法错误: 缺少“;”(在“<”的前面)
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C2238: 意外的标记位于“;”之前
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(296): error C2614: “ListNode”: 非法的成员初始化:“pre”不是基或成员
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(297): error C2614: “ListNode”: 非法的成员初始化:“next”不是基或成员
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(300): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(300): error C2065: “endl”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(305): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(305): error C2065: “endl”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C2065: “shared_ptr”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C2275: “ListNode”: 将此类型用作表达式非法
-  c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(293): note: 参见“ListNode”的声明
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C3861: “sp1”: 找不到标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C2065: “shared_ptr”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C2275: “ListNode”: 将此类型用作表达式非法
-  c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(293): note: 参见“ListNode”的声明
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C3861: “sp2”: 找不到标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “sp1”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “endl”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “sp2”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “endl”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(321): error C2065: “sp1”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(321): error C2065: “sp2”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(322): error C2065: “sp2”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(322): error C2065: “sp1”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “sp1”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “endl”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “cout”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “sp2”: 未声明的标识符
-c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “endl”: 未声明的标识符
+c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(238): error C2672: “std::invoke”: 未找到匹配的重载函数
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(246): note: 参见对正在编译的函数 模板 实例化“void std::_LaunchPad<_Target>::_Execute<0,1,2>(std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<T>> &,size_t),LMJian::shared_ptr<T,DFDef<T>>,int> &,std::integer_sequence<unsigned int,0,1,2>)”的引用
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>,
+              T=Date
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(245): note: 参见对正在编译的函数 模板 实例化“void std::_LaunchPad<_Target>::_Execute<0,1,2>(std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<T>> &,size_t),LMJian::shared_ptr<T,DFDef<T>>,int> &,std::integer_sequence<unsigned int,0,1,2>)”的引用
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>,
+              T=Date
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(242): note: 编译 类 模板 成员函数 "void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept" 时
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(230): note: 参见对正在编译的函数 模板 实例化“void std::_LaunchPad<_Target>::_Run(std::_LaunchPad<_Target> *) noexcept”的引用
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(257): note: 参见对正在编译的 类 模板 实例化 "std::_LaunchPad<_Target>" 的引用
+          with
+          [
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>
+          ]
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thread(46): note: 参见对正在编译的函数 模板 实例化“void std::_Launch<std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<T>> &,size_t),LMJian::shared_ptr<T,DFDef<T>>,int>,std::default_delete<_Ty>>>(_Thrd_t *,_Target &&)”的引用
+          with
+          [
+              T=Date,
+              _Ty=std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,
+              _Target=std::unique_ptr<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>,std::default_delete<std::tuple<void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t),LMJian::shared_ptr<Date,DFDef<Date>>,int>>>
+          ]
+  c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(261): note: 参见对正在编译的函数 模板 实例化“std::thread::thread<void(__cdecl &)(LMJian::shared_ptr<Date,DFDef<T>> &,size_t),LMJian::shared_ptr<T,DFDef<T>>&,int,void>(_Fn,LMJian::shared_ptr<T,DFDef<T>> &,int &&)”的引用
+          with
+          [
+              T=Date,
+              _Fn=void (__cdecl &)(LMJian::shared_ptr<Date,DFDef<Date>> &,size_t)
+          ]
+c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(237): error C2893: 未能使函数模板“unknown-type std::invoke(_Callable &&,_Types &&...) noexcept(<expr>)”专用化
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(237): note: 用下列模板参数:
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(237): note: “_Callable=void (__cdecl *)(LMJian::shared_ptr<Date,DFDef<T>> &,size_t)”
+  c:\program files (x86)\microsoft visual studio\2017\professional\vc\tools\msvc\14.16.27023\include\thr\xthread(237): note: “_Types={LMJian::shared_ptr<Date,DFDef<T>>, int}”

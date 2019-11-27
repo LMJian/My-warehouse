@@ -1,7 +1,8 @@
+#include<iostream>
+using namespace std;
+
 #if 0
-// 1 
-// 2
-namespace bite
+namespace LMJian
 {
 	template<class T>
 	class shared_ptr
@@ -46,16 +47,12 @@ namespace bite
 		{
 			if (this != &sp)
 			{
-				// 1. 与旧资源断开联系
-				// this现在不是用自己的资源，要与sp对象共享资源
 				if (_ptr && 0 == --*_pCount)
 				{
-					// 当前对象是最后一个使用资源的对象
 					delete _ptr;
 					delete _pCount;
 				}
 
-				// 2. 与sp共享资源及计数
 				_ptr = sp._ptr;
 				_pCount = sp._pCount;
 				if (_ptr)
@@ -80,18 +77,18 @@ namespace bite
 
 void TestShradPtr()
 {
-	bite::shared_ptr<int> sp1(new int);
+	LMJian::shared_ptr<int> sp1(new int);
 	cout << sp1.use_count() << endl;
 
-	bite::shared_ptr<int> sp2(sp1);
+	LMJian::shared_ptr<int> sp2(sp1);
 	cout << sp1.use_count() << endl;
 	cout << sp2.use_count() << endl;
 
 
-	bite::shared_ptr<int> sp3(new int);
+	LMJian::shared_ptr<int> sp3(new int);
 	cout << sp3.use_count() << endl;
 
-	bite::shared_ptr<int> sp4(sp3);
+	LMJian::shared_ptr<int> sp4(sp3);
 	cout << sp3.use_count() << endl;
 	cout << sp4.use_count() << endl;
 
@@ -110,17 +107,11 @@ int main()
 	TestShradPtr();
 	return 0;
 }
-#endif
+#endif 
 
 
-#if 0
-// 定制删除器：让用户可以控制资源具体的释放操作
-// 不是线程安全的
 
-// 进程：公司
-// 线程：员工
 #include <mutex>
-
 template<class T>
 class DFDef
 {
@@ -135,7 +126,7 @@ public:
 	}
 };
 
-namespace bite
+namespace LMJian
 {
 	template<class T, class DF = DFDef<T>>
 	class shared_ptr
@@ -151,7 +142,6 @@ namespace bite
 				_pCount = new int(1);
 				_pMutex = new mutex;
 			}
-
 		}
 
 		~shared_ptr()
@@ -181,17 +171,14 @@ namespace bite
 		{
 			if (this != &sp)
 			{
-				// 1. 与旧资源断开联系
-				// this现在不是用自己的资源，要与sp对象共享资源
 				Release();
 
-				// 2. 与sp共享资源及计数
 				_ptr = sp._ptr;
 				_pCount = sp._pCount;
+				_pMutex = sp._pMutex;
 				if (_ptr)
 					AddRef();
 			}
-
 			return *this;
 		}
 
@@ -205,29 +192,29 @@ namespace bite
 		{
 			if (_pCount)
 			{
-				_pMutex->lock(); // 加锁
+				_pMutex->lock(); 
 				++*_pCount;
-				_pMutex->unlock();// 解锁
+				_pMutex->unlock();
 			}
 		}
 
+		//加锁的--
 		int SubRef()
 		{
 			if (_pCount)
 			{
-				_pMutex->lock(); // 加锁
+				_pMutex->lock(); 
 				--*_pCount;
-				_pMutex->unlock();// 解锁
+				_pMutex->unlock();
 			}
-
 			return *_pCount;
 		}
 
+		//销毁
 		void Release()
 		{
 			if (_ptr && 0 == SubRef())
 			{
-				// 当前对象是最后一个使用资源的对象
 				DF()(_ptr);
 				delete _pCount;
 			}
@@ -252,13 +239,11 @@ struct Date
 	int _day;
 };
 
-// 1. shared_ptr的引用计数是否安全---mutex
-// 2. shared_ptr所管理的用户数据是否是线程安全
-void SharePtrFunc(bite::shared_ptr<Date>& sp, size_t n)
+void SharePtrFunc(LMJian::shared_ptr<Date>& sp, size_t n)
 {
 	for (size_t i = 0; i < n; ++i)
 	{
-		bite::shared_ptr<Date> copy(sp);
+		LMJian::shared_ptr<Date> copy(sp);
 
 		copy->_year++;
 		copy->_month++;
@@ -266,11 +251,12 @@ void SharePtrFunc(bite::shared_ptr<Date>& sp, size_t n)
 	}
 }
 
+
 #include <thread>
 
 int main()
 {
-	bite::shared_ptr<Date> sp(new Date);
+	LMJian::shared_ptr<Date> sp(new Date);
 
 	thread t1(SharePtrFunc, sp, 100000);
 	thread t2(SharePtrFunc, sp, 100000);
@@ -279,8 +265,8 @@ int main()
 	t2.join();
 	return 0;
 }
-#endif
 
+#if 0
 #include <memory>
 
 // struct ListNode
@@ -330,3 +316,5 @@ int main()
 	TestListNode();
 	return 0;
 }
+
+#endif
