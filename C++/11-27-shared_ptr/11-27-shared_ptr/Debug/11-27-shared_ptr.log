@@ -1,0 +1,37 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(308): error C2238: 意外的标记位于“;”之前
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C2143: 语法错误: 缺少“;”(在“<”的前面)
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C4430: 缺少类型说明符 - 假定为 int。注意: C++ 不支持默认 int
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(309): error C2238: 意外的标记位于“;”之前
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(296): error C2614: “ListNode”: 非法的成员初始化:“pre”不是基或成员
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(297): error C2614: “ListNode”: 非法的成员初始化:“next”不是基或成员
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(300): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(300): error C2065: “endl”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(305): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(305): error C2065: “endl”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C2065: “shared_ptr”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C2275: “ListNode”: 将此类型用作表达式非法
+  c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(293): note: 参见“ListNode”的声明
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(315): error C3861: “sp1”: 找不到标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C2065: “shared_ptr”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C2275: “ListNode”: 将此类型用作表达式非法
+  c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(293): note: 参见“ListNode”的声明
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(316): error C3861: “sp2”: 找不到标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “sp1”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(318): error C2065: “endl”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “sp2”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(319): error C2065: “endl”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(321): error C2065: “sp1”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(321): error C2065: “sp2”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(322): error C2065: “sp2”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(322): error C2065: “sp1”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “sp1”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(324): error C2065: “endl”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “cout”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “sp2”: 未声明的标识符
+c:\users\administrator\desktop\github\my-warehouse\c++\11-27-shared_ptr\11-27-shared_ptr\main.cpp(325): error C2065: “endl”: 未声明的标识符
