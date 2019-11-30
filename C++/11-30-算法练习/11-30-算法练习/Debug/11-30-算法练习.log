@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\my-warehouse\c++\11-30-算法练习\11-30-算法练习\main.cpp(10): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\my-warehouse\c++\11-30-算法练习\11-30-算法练习\main.cpp(11): warning C4018: “>”: 有符号/无符号不匹配
+  11-30-算法练习.vcxproj -> C:\Users\Administrator\Desktop\Github\My-warehouse\C++\11-30-算法练习\Debug\11-30-算法练习.exe
