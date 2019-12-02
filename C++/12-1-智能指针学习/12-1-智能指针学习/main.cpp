@@ -186,6 +186,7 @@ namespace LMJian {
 
 		cout << sp1.use_count() << endl;
 		cout << sp2.use_count() << endl;
+	
 	}
 
 int main() {
