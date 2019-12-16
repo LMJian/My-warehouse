@@ -2,26 +2,33 @@
 #include<vector>
 using namespace std;
 
-void Set(vector<int>& arr, int num) {
+int k, l;
+int arr[100][100] = { 0 };
 
-}
-void Print(int k, int l) {
-	vector<int> arr(k, 0);
-	for (int i = 1; i < k - 1; ++i) {
-		arr[i] = k - 2;
+int Print(int ret, int len) {
+	int sum = 0;
+	if (len == l)
+		return 1;
+	for (int i = 0; i < k; ++i) {
+		if (i - 1 != ret && i + 1 != ret)
+		{
+			if (len == l - 1 && i == 0)
+				sum += 0;
+			else if (arr[i][len + 1] > 0)
+				sum += arr[i][len + 1];
+			else
+				sum += Print(i, len + 1);
+		}
 	}
-	arr[0] = arr[k - 1] = k - 1;
-	vector<int> maze(k, 0);
-	Set(maze, 1);
-	for (int i = 0; i < l - 1; ++i) {
-
-	}
-
+	if (ret != -2)
+		arr[ret][len] = sum;
+	return sum;
 }
+
 int main() {
-	int k, l;
 	while (cin >> k >> l) {
-		Print(k, l);
+		memset(arr, 0, sizeof(arr));
+		cout << Print(-2, 0) << endl;
 	}
 	return 0;
 }
