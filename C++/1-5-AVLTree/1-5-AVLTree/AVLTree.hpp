@@ -114,6 +114,21 @@ public:
 	bool IsBalanceTree() {
 		return IsAVLTree(_Root);
 	}
+	void Show() {
+		stack<PNode> arr;
+		PNode node = _Root;
+		while (!arr.empty() || node) {
+			while (node) {
+				arr.push(node);
+				node = node->_pLeft;
+			}
+			node = arr.top();
+			arr.pop();
+			cout << node->_data << " ";
+			node = node->_pRight;
+		}
+		cout << endl;
+	}
 private:
 	void RotateL(PNode pParent) {
 		pParent->_bf = pParent->_pRight->_bf = 0;

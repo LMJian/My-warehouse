@@ -15,6 +15,8 @@ void testAVLTree() {
 	}
 	cout << tree_a.IsBalanceTree() << endl << tree_b.IsBalanceTree() << endl;
 	cout << tree_a.Find(7)->_data << endl << tree_b.Find(15)->_data << endl;
+	tree_a.Show();
+	tree_b.Show();
 }
 int main() {
 	testAVLTree();
