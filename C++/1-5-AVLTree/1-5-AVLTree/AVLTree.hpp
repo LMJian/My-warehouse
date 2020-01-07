@@ -110,7 +110,143 @@ public:
 		}
 		return nullptr;
 	}
-	//bool DelNode(const T& data);
+	bool DelNode(const T& data) {
+		if (!_Root)          //二叉树为空无法删除
+			return false;
+		PNode pCur = _Root;
+		while (pCur) {
+			if (data < pCur->_data) {
+				pCur = pCur->_pLeft;
+			}
+			else if (data > pCur->_data){
+				pCur = pCur->_pRight;
+			}
+			else
+				break;
+		}
+		if (!pCur)       //没有找到
+			return false;
+		PNode RealDelNode = nullptr;//该节点是pCur所在左子树中最大的结点，或者在右子树中最小的结点
+		                            //使用该节点和pCur节点交换值，删除RealDelNode节点即可
+		PNode father = nullptr;
+		if (pCur->_pLeft) {   //pCur的左子树存在
+			RealDelNode = pCur->_pLeft;
+			while (RealDelNode->_pRight)     //寻找左子树最大的结点
+				RealDelNode = RealDelNode->_pRight;
+			father = RealDelNode->_pParent;
+			pCur->_data = RealDelNode->_data;//交换值
+			if (RealDelNode->_pLeft) {       //如果realdelnode有左子树
+				PNode children = RealDelNode->_pLeft;
+				if (father->_pLeft == RealDelNode) {
+					father->_pLeft = children;
+					children->_pParent = father;
+					++father->_bf;
+				}
+				else {
+					father->_pRight = children;
+					children->_pParent = father;
+					--father->_bf;
+				}
+				delete RealDelNode;
+			}
+			else {     //如果没有左子树，即realdelnode为叶子节点
+				if (father->_pLeft == RealDelNode) {
+					father->_pLeft = nullptr;
+					++father->_bf;
+				}
+				else {
+					father->_pRight =nullptr;
+					--father->_bf;
+				}
+				delete RealDelNode;
+			}
+		}
+		else if (pCur->_pRight) {   //pCur右子树存在
+			RealDelNode = pCur->_pRight;
+			while (RealDelNode->_pLeft)
+				RealDelNode = RealDelNode->_pLeft;
+			father = RealDelNode->_pParent;
+			pCur->_data = RealDelNode->_data;
+			if (RealDelNode->_pRight) {   //如果realdelnode有右子树
+				PNode children = RealDelNode->_pRight;
+				if (father->_pLeft == RealDelNode) {
+					father->_pLeft = children;
+					children->_pParent = father;
+					++father->_bf;
+				}
+				else {
+					father->_pRight = children;
+					children->_pParent = father;
+					--father->_bf;
+				}
+				delete RealDelNode;
+			}
+			else {                        //如果没有右子树，即realdelnode为叶子节点
+				if (father->_pLeft == RealDelNode) {
+					father->_pLeft = nullptr;
+					++father->_bf;
+				}
+				else{
+					father->_pRight = nullptr;
+					--father->_bf;
+				}
+				delete RealDelNode;
+			}
+		}
+		else {          //pCur没有左右子树
+			father = pCur->_pParent;
+			if (!father) {   //删除最后一个元素
+				delete pCur;
+				_Root = nullptr;
+				return true;
+			}
+			else if (father->_pLeft == pCur) {
+				father->_pLeft = nullptr;
+				++father->_bf;
+				delete pCur;
+			}
+			else {
+				father->_pRight = nullptr;
+				--father->_bf;
+				delete pCur;
+			}	
+		}
+		PNode pPfather = father->_pParent;
+		while (father) {
+			if (father->_bf == 1 || father->_bf == -1)
+				break;
+			if (father->_bf > 1 || father->_bf < -1) {
+				if (father->_bf == 2) {
+					if (father->_pRight->_bf == 1) {//左旋
+						RotateL(father);
+					}
+					else {//右左旋
+						RotateRL(father);
+					}
+				}
+				else {
+					if (father->_pLeft->_bf == -1) {//右旋
+						RotateR(father);
+					}
+					else {//左右旋
+						RotateLR(father);
+					}
+				}
+				break;
+			}
+			if (pPfather&&pPfather->_pLeft == father) {
+				++pPfather->_bf;
+			}
+			else if (pPfather&&pPfather->_pRight == father) {
+				--pPfather->_bf;
+			}
+			father = pPfather;
+			if (pPfather) {
+				pPfather = pPfather->_pParent;
+			}
+		}
+		return true;
+	}
 	bool IsBalanceTree() {
 		return IsAVLTree(_Root);
 	}
