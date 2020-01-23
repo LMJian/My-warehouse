@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "1-23-算法练习", "1-23-算法练习\1-23-算法练习.vcxproj", "{BD38FE63-2105-4B0C-BC43-0D099C878A35}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Debug|x64.ActiveCfg = Debug|x64
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Debug|x64.Build.0 = Debug|x64
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Debug|x86.ActiveCfg = Debug|Win32
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Debug|x86.Build.0 = Debug|Win32
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Release|x64.ActiveCfg = Release|x64
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Release|x64.Build.0 = Release|x64
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Release|x86.ActiveCfg = Release|Win32
+		{BD38FE63-2105-4B0C-BC43-0D099C878A35}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {43CE5B77-8ED4-4D99-B0D3-76E29356790F}
+	EndGlobalSection
+EndGlobal
