@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(10): error C2131: 表达式的计算结果不是常数
+  c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(10): note: 因读取超过生命周期的变量而失败
+  c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(10): note: 请参见“x”的用法
+c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(11): error C3863: 不可指定数组类型“bool [x+][y+]”
+c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(13): error C3863: 不可指定数组类型“bool [x+][y+]”
+c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(17): error C3863: 不可指定数组类型“bool [x+][y+]”
+c:\users\administrator\desktop\github\my-warehouse\c++\1-24-通配符匹配\1-24-通配符匹配\main.cpp(19): error C3863: 不可指定数组类型“bool [x+][y+]”
