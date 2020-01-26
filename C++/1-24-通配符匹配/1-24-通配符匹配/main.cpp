@@ -22,7 +22,6 @@ public:
 		return arr[x][y];
 	}
 };
-
 int main() {
 	Solution sa;
 	sa.isMatch("adceb", "*a*b");
