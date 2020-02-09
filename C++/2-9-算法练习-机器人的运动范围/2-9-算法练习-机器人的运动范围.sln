@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2-9-算法练习-机器人的运动范围", "2-9-算法练习-机器人的运动范围\2-9-算法练习-机器人的运动范围.vcxproj", "{DBE96FB3-2A3A-4584-855B-339CBE441D4A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Debug|x64.ActiveCfg = Debug|x64
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Debug|x64.Build.0 = Debug|x64
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Debug|x86.ActiveCfg = Debug|Win32
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Debug|x86.Build.0 = Debug|Win32
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Release|x64.ActiveCfg = Release|x64
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Release|x64.Build.0 = Release|x64
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Release|x86.ActiveCfg = Release|Win32
+		{DBE96FB3-2A3A-4584-855B-339CBE441D4A}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6405DBEE-BD9D-441E-9F9B-3BA02F33E649}
+	EndGlobalSection
+EndGlobal
