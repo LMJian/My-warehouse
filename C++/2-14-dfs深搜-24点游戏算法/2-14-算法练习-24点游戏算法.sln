@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.852
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "2-14-算法练习-24点游戏算法", "2-14-算法练习-24点游戏算法\2-14-算法练习-24点游戏算法.vcxproj", "{7262EC68-46FE-4F5F-8389-31BF8466099E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Debug|x64.ActiveCfg = Debug|x64
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Debug|x64.Build.0 = Debug|x64
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Debug|x86.ActiveCfg = Debug|Win32
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Debug|x86.Build.0 = Debug|Win32
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Release|x64.ActiveCfg = Release|x64
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Release|x64.Build.0 = Release|x64
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Release|x86.ActiveCfg = Release|Win32
+		{7262EC68-46FE-4F5F-8389-31BF8466099E}.Release|x86.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BB34C9B1-8BD8-4AC3-94BD-E45B414213E9}
+	EndGlobalSection
+EndGlobal
