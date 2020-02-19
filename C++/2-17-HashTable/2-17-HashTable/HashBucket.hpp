@@ -16,11 +16,11 @@ template<class T, class DF = DFInt>
 class HashBucket {
 	typedef HashNode<T> Node;
 public:
-	HashBucket(size_t capacity = 11)
+	HashBucket(size_t capacity = 5)
 		:size_(0)
 	{
 		//vec_.resize(GetNextPrime(capacity));
-		vec_.resize(10);
+		vec_.resize(capacity);
 	}
 	bool InsertUnique(const T& val) {
 		CheckCapacity();    //≈–∂œ «∑Ò¿©»›
@@ -132,8 +132,11 @@ private:
 			for (size_t i = 0; i < vec_.size(); ++i) {
 				Node* ptr = vec_[i];
 				while(ptr) {
-					newHB.InsertUnique(ptr->val_);
-					ptr = ptr->next_;
+					vec_[i] = ptr->next_;
+					size_t addr = newHB.HashAddr(ptr->val_);
+					ptr->next_ = newHB.vec_[addr];
+					newHB.vec_[addr] = ptr;
+					ptr = vec_[i];
 				}
 			}
 			vec_.swap(newHB.vec_);
