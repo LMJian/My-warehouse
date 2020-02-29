@@ -65,47 +65,41 @@ void MergeSort(int *arr, int *tmp, int left, int right) {
 		arr[i] = tmp[i];
 }
 
-void qSort(int* arr, int l, int r) {
-	if (l >= r) {
+void treeQSort(int* arr, int left, int right) {
+	if (left >= right)
 		return;
+	int midL = left;
+	int midR = right + 1;
+	int i = left + 1;
+	int tmp = arr[left];
+	while (i < midR) {
+		if (arr[i] < tmp) {
+			int t = arr[i];
+			arr[i] = arr[midL + 1];
+			arr[midL + 1] = t;
+			++midL;
+			++i;
+		}
+		else if (arr[i] > tmp) {
+			int t = arr[i];
+			arr[i] = arr[midR - 1];
+			arr[midR - 1] = t;
+			--midR;
+		}
+		else
+			++i;
 	}
-	int v = arr[l];
-	int lt = l;
-	int i = l + 1;
-	int gt = r + 1;
-	while (i < gt) {
-		if (arr[i] < v) {
-			int tmp = arr[i];
-			arr[i] = arr[lt + 1];
-			arr[lt + 1] = tmp;
-			//swap(arr, i, lt + 1);
-			lt++;
-			i++;
-		}
-		else if (arr[i] > v) {
-			int tmp = arr[i];
-			arr[i] = arr[gt - 1];
-			arr[gt - 1] = tmp;
-			//swap(arr, i, gt - 1);
-			gt--;
-		}
-		else {
-			i++;
-		}
-	}
-	// 循环⾛走完只需要将l位置的元素与lt交换即为分区点
-	int tmp = arr[l];
-	arr[l] = arr[lt];
-	arr[lt] = tmp;
-	//swap(arr, l, lt);
-	qSort(arr, l, lt - 1);
-	qSort(arr, gt, r);
+	int t = arr[left];
+	arr[left] = arr[midL];
+	arr[midL] = t;
+	treeQSort(arr, left, midL - 1);
+	treeQSort(arr, midR, right);
 }
 
 int main() {
-	int arr[] = { 5,8,7,4 ,9,6,3,2,1 };
+	int arr[] = { 5,8,7,4 ,5,6,3,2,5 };
 	int *tmp = new int[9];
-	qSort(arr, 0, 8);
+	treeQSort(arr,0, 8);
 	for (auto& e : arr)
 		cout << e << " ";
 	cout << endl;
