@@ -13,15 +13,15 @@ struct HashNode {
 	T _data;
 };
 
-template<class T, class DF = DFDef<T>>
+template<class T, class KOFV, class DF = DFDef<T>>
 class HashBucket;
 
 //迭代器
-template<class T, class DF = DFDef<T>>
+template<class T, class KOFV, class DF = DFDef<T>>
 struct HBIterator {
 	typedef HashNode<T> Node;
-	typedef HBIterator<T, DF> Self;
-	HBIterator(Node* pNode = nullptr, HashBucket<T, DF>* ht = nullptr)
+	typedef HBIterator<T, KOFV, DF> Self;
+	HBIterator(Node* pNode = nullptr, HashBucket<T, KOFV ,DF>* ht = nullptr)
 		:_pNode(pNode)
 		, _ht(ht)
 	{}
@@ -71,7 +71,7 @@ struct HBIterator {
 		}
 	}
 	HashNode<T>* _pNode;
-	HashBucket<T, DF>* _ht;
+	HashBucket<T, KOFV, DF>* _ht;
 };
 
 
@@ -80,9 +80,9 @@ struct HBIterator {
 //2.在类中重新给迭代器命名
 //3.增加begin/end
 
-template<class T, class DF>
+template<class T, class KOFV, class DF>
 class HashBucket {
-	friend struct HBIterator<T, DF>;
+	friend struct HBIterator<T, KOFV, DF>;
 	typedef HashNode<T> Node;
 	typedef HBIterator<T, DF>iterator;
 public:
@@ -92,7 +92,9 @@ public:
 		_table.resize(GetNextPrime(10));
 	}
 	//插入时，哈希桶中的元素是唯一的
-	bool insertunique(const T& data) {
+	pair<iterator,bool> insertunique(const T& data) {
+
+		CheckCapacity();
 		//通过哈希元素，计算桶号
 		size_t bucketNo = HashFunc(data);
 
@@ -100,8 +102,7 @@ public:
 		Node* pCur = _table[bucketNo];
 		while (pCur) {
 			if (pCur->_data == data)
-				return false;
-
+				return make_pair(iterator(pCur, this), false);
 			pCur = pCur->_pNext;
 		}
 		//插入新节点,采用头插的方式
@@ -109,11 +110,12 @@ public:
 		pCur->_pNext = _table[bucketNo];
 		_table[bucketNo] = pCur;
 		++_size;
-		return true;
+
+		//return make_pair(iterator()));
 	}
 	bool insertEqual(const T& data);
 
-	bool eraseunique(const T& data) {
+	size_t eraseunique(const T& data) {
 		//通过哈希函数计算data所在的桶号
 		size_t bucketNo = HashFunc(data);
 
@@ -133,30 +135,30 @@ public:
 				}
 				delete pCur;
 				--_size;
-				return true;
+				return 1;
 			}
 			else {
 				pPre = pCur;
 				pCur = pCur->_pNext;
 			}
 		}
-		return false;
+		return 0;
 	}
 
 	bool eraseEqual(const T& data);
 
-	Node* find(const T& data)const {
+	iterator find(const T& data)const {
 		//计算data所在的桶号
 		size_t bucketNo = HashFunc(data);
 
 		//在bucketNo所对应的链表中找值为data的节点
 		Node* pCur = _table[bucketNo];
 		while (pCur) {
-			if (pCur->_data == data)
-				return pCur;
+			if (KOFV()(pCur->_data) == KOFV()(data))
+				return iterator(pCur, this);
 			pCur = pCur->_pNext;
 		}
-		return nullptr;
+		return end();
 	}
 	size_t size()const {
 		return _size;
@@ -176,6 +178,38 @@ public:
 	iterator end() {
 		return iterator(nullptr, this);
 	}
+
+	void clear() {
+		for (size_t bucketNo = 0; bucketNo < _table.capacity(); ++bucketNo) {
+			Node* cur = _table[bucketNo];
+			while (cur) {
+				_table[bucketNo] = cur->_pNext;
+				delete cur;
+				cur = _table[bucketNo];
+			}
+		}
+	}
+
+	size_t bucket_count()const {
+		return _table.capacity();
+	}
+	size_t bucket_size(size_t bucketNo)const {
+		if (bucketNo >= bucket_count())
+			return 0;
+
+		size_t count = 0;
+		Node* cur = _table[bucketNo];
+		while (cur) {
+			count++;
+			cur = cur->_pNext;
+		}
+		return count;
+	}
+	//获取key所在的桶号
+	size_t bucket(const T& data) {
+		return HashFunc(data);
+	}
+
 	void PrintHashBucket() {
 		for (size_t bucketNo = 0; bucketNo < _table.capacity(); ++bucketNo) {
 			Node* pCur = _table[bucketNo];
@@ -191,11 +225,22 @@ private:
 	//扩容
 	void CheckCapacity() {
 		if (_size == _table.capacity()) {
+			HashBucket<T, DF> newHT(GetNextPrime());
 
+			for (size_t bucketNo = 0; bucketNo < _table.capacity(); ++bucketNo) {
+				Node* cur = _table[bucketNo];
+				while (cur) {
+					size_t newBucketNo = newHT.HashFunc(cur->_data);
+
+					_table[bucketNo] = cur->_pNext;
+
+					cur->_pNext=newBT
+				}
+			}
 		}
 	}
 	size_t HashFunc(const T& data) const {
-		return DF()(data) % _table.capacity();
+		return DF()(KOFV()(data)) % _table.capacity();
 	}
 private:
 	std::vector<Node*> _table;
@@ -205,7 +250,7 @@ private:
 #include<iostream>
 using namespace std;
 
-void TestHashBucket() {
+/*void TestHashBucket() {
 	HashBucket<int> ht;
 	int array[] = { 1,4,7,9,6,5 };
 	for (auto e : array)
@@ -234,4 +279,4 @@ void TestHashBucket() {
 	}
 	cout << ht.size() << endl;
 	ht.PrintHashBucket();
-}
+}*/
