@@ -12,18 +12,20 @@ int main() {
 
 	int left = 0;
 	int right = n - 1;
-	int count = 0;
+	long long count = 0;
 	int zero = 0;
 	while (left <= right) {
-		while (left <= right && arr[left] == 0)
+		while (left <= right && arr[left] <= 0)
 			++left;
-		while (left <= right && arr[right] == 0)
+		while (left <= right && arr[right] <= 0)
 			--right;
 		if (left > right)
 			break;
 		zero = 0;
 		for (int i = left; i <= right; ++i) {
-			if (arr[i] == 0)
+			if (i + 1 <= right && arr[i] == 0 && arr[i + 1] == 0)
+				--arr[i];
+			else if (arr[i] == 0)
 				++zero;
 			else
 				--arr[i];
@@ -31,4 +33,5 @@ int main() {
 		count += zero + 1;
 	}
 	cout << count << endl;
+	system("pause");
 }
