@@ -1,6 +1,7 @@
 #include<iostream>
 #include"HashBucket.hpp"
 #include"Unordered_map.hpp"
+#include"Unordered_set.hpp"
 #include<string>
 using namespace std;
 
@@ -39,8 +40,33 @@ void TestUnorderedMAP()
 	m.clear();
 }
 
+void TestUnorderedSet()
+{
+	Unordered_set<string> m;
+
+	// 构造键值对的两种方式：pair结构体  make_pair
+	m.insert("apple");
+	m.insert("banana");
+	m.insert("orange");
+	m.insert("peach");
+
+	cout << m.size() << endl;
+	cout << m.buck_count()<< endl;  // 桶的个数
+	cout << m.buck_size(0) << endl;  // 0号桶中的元素个数
+	cout << m.bucket("orange") << endl;   // 获取key所在的桶号
+
+	// key不能重复
+	m.insert("apple");
+	cout << m.size() << endl;
+
+	m.erase("orange");
+	cout << m.size() << endl;
+
+	m.clear();
+}
 int main() {
-	TestUnorderedMAP();
+	//TestUnorderedMAP();
+	TestUnorderedSet();
 	system("pause");
 	return 0;
 }

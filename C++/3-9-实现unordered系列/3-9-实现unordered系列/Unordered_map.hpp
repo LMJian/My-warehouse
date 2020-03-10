@@ -10,8 +10,8 @@ class Unordered_map {
 			return data.first;
 		}
 	};
-	typedef Iterator<ValueType, KORV> iterator;
-	//typename typedef HashBucket<ValueType, KORV>::iterator iterator;
+	//typedef Iterator<ValueType, KORV> iterator;
+	typename typedef HashBucket<ValueType, KORV>::iterator iterator;
 public:
 	Unordered_map(size_t size = 11)
 		:_ht(size)

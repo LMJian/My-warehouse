@@ -118,6 +118,7 @@
     <ClInclude Include="Common.hpp" />
     <ClInclude Include="HashBucket.hpp" />
     <ClInclude Include="Unordered_map.hpp" />
+    <ClInclude Include="Unordered_set.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
