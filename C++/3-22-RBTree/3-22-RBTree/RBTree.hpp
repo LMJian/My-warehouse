@@ -1,4 +1,5 @@
 #pragma once
+#include<algorithm>
 
 enum Color {
 	RED,
@@ -23,34 +24,130 @@ struct RBTreeNode
 	Color _color;
 };
 
-template<class ValueType>
-class RBTree {
-	typedef RBTreeNode<ValueType> Node;
-	typedef Node* PNode;
+template<class T, class KorV>
+class RBTree;
+
+template<class T>
+class Iterator {
 public:
-	bool Insert(const ValueType& data) {
-		PNode& pRoot = GetRoot();   //获取根节点
-		if (nullptr == pRoot) {   //如果红黑树为空
-			pRoot = new Node(data, BLACK);
-			
-			pRoot->_pParent = _pHead;
-			_pHead->_pParent = pRoot;
+	typedef RBTreeNode<T> Node;
+	typedef Iterator<T> Self;
+
+	Iterator(Node* pNode=nullptr)
+		:_pNode(pNode)
+	{}
+	T& operator*() {
+		return _pNode->_data;
+	}
+	T* operator->() {
+		return &(_pNode->_data);
+	}
+	Self& operator++() {
+		Next();
+		return *this;
+	}
+	Self operator++(int) {
+		Self tmp(_pNode);
+		Next();
+		return tmp;
+	}
+	Self& operator--() {
+		Prev();
+		return *this;
+	}
+	Self operator--(int) {
+		Self tmp(_pNode);
+		Prev();
+		return tmp;
+	}
+	bool operator==(const Self& t) const {
+		return _pNode == t._pNode;
+	}
+	bool operator!=(const Self& t) const{
+		return _pNode != t._pNode;
+	}
+private:
+	void Next() {
+		//如果有右子树
+		if (_pNode->_pRight) {
+			_pNode = _pNode->_pRight;
+			while (_pNode->_pLeft)
+				_pNode = _pNode->_pLeft;
+			return;
+		}
+		Node* pParent = _pNode->_pParent;
+		while (pParent->_pRight == _pNode) {
+			_pNode = pParent;
+			pParent = _pNode->_pParent;
+		}
+		//根节点没有右子树，并且迭代器刚好在根节点位置
+		if (_pNode->_pRight != pParent)
+			_pNode = pParent;
+	}
+	void Prev() {
+		//1._pNode在head位置（即end()位置），应该将_pNode放在最大结点处
+		if (_pNode->_pParent->_pParent == _pNode && _pNode->_color == RED)
+			_pNode = _pNode->_pRight;
+		//2. 如果有左子树
+		else if (_pNode->_pLeft) {
+			_pNode = _pNode->_pLeft;
+			while (_pNode->_pRight)
+				_pNode = _pNode->_pRight;
 		}
 		else {
-			//插入节点
+			Node* pParent = _pNode->_pParent;
+			while (pParent->_pLeft == _pNode) {
+				_pNode = pParent;
+				pParent = _pNode->_pParent;
+			}
+			_pNode = pParent;
+		}
+	}
+	Node* _pNode;
+};
+
+template<class T,class KorV>
+class RBTree {
+public:
+	typedef RBTreeNode<T> Node;
+	typedef Node* PNode;
+	typedef RBTree<T, KorV> Self;
+	typedef Iterator<T> iterator;
+public:
+	RBTree()
+		:_pHead(new Node)
+		,_size(0)
+	{
+		_pHead->_pLeft = _pHead;
+		_pHead->_pRight = _pHead;
+	}
+	~RBTree() {
+		if (_pHead->_pParent)
+			del(_pHead->_pParent);
+		delete _pHead;
+	}
+	std::pair<iterator,bool> Insert(const T& data) {
+		PNode& pRoot = GetRoot();   //获取根节点
+		PNode newPtr = nullptr;
+		if (nullptr == pRoot) {   //如果红黑树为空
+			newPtr = pRoot = new Node(data, BLACK);
+			pRoot->_pParent = _pHead;
+		}
+		else {
 			PNode pParent = nullptr;
 			PNode pCur = pRoot;
+			//插入节点
 			while (pCur) {
 				pParent = pCur;
-				if (data < pCur->_data)
+				if (KorV()(data) < KorV()(pCur->_data))
 					pCur = pCur->_pLeft;
-				else if (data > pCur->_data)
+				else if (KorV()(data) > KorV()(pCur->_data))
 					pCur = pCur->_pRight;
 				else
-					return false;
+					return std::make_pair(iterator(), false);
 			}
-			pCur = new Node(data);
-			if (data < pParent->_data) {
+			newPtr = pCur = new Node(data);
+			if (KorV()(data) < KorV()(pParent->_data)) {
 				pParent->_pLeft = pCur;
 				pCur->_pParent = pParent;
 			}
@@ -58,8 +155,9 @@ public:
 				pParent->_pRight = pCur;
 				pCur->_pParent = pParent;
 			}
+
 			//检测新节点插入后。红黑树的性质是否遭到破坏
-			while (pParent&&RED == pParent->_color) {
+			while (pParent != _pHead && RED == pParent->_color) {
 				PNode pGrand = pParent->_pParent;
 				//pParent在pGrand左侧的情况
 				if (pParent == pGrand->_pLeft) {
@@ -69,15 +167,15 @@ public:
 						pParent->_color = BLACK;
 						unclue->_color = BLACK;
 						pGrand->_color = RED;
-						
+
 						pCur = pGrand;
 						pParent = pCur->_pParent;
 					}
 					else {
 						//情况三
-						if (pParent->_pRight==pCur) {
+						if (pParent->_pRight == pCur) {
 							RotateLeft(pParent);
-							swap(pParent, pCur);
+							std::swap(pParent, pCur);
 						}
 						//情况二
 						RotateRight(pGrand);
@@ -101,7 +199,7 @@ public:
 						//情况三
 						if (pParent->_pLeft == pCur) {
 							RotateRight(pParent);
-							swap(pParent, pCur);
+							std::swap(pParent, pCur);
 						}
 						//情况二
 						RotateLeft(pGrand);
@@ -116,7 +214,13 @@ public:
 		//更新头结点的左右孩子
 		_pHead->_pLeft = LeftMost();
 		_pHead->_pRight = RightMost();
-		return true;
+		++_size;
+		return std::make_pair(iterator(newPtr), true);
+	}
+	void Inorder()
+	{
+		_InOrder(GetRoot());
+		std::cout << std::endl;
 	}
 
 	bool IsValidRBTree()
@@ -145,6 +249,50 @@ public:
 		return _IsValidRBTree(pRoot, k, blackCount);
 	}
 
+	iterator find(const T& data)const {
+		PNode ptr = GetRoot();
+		while (ptr) {
+			if (KorV()(data) == KorV()(ptr->_data))
+				return iterator(ptr);
+			else if (KorV()(data) < KorV()(ptr->_data))
+				ptr = ptr->_pLeft;
+			else
+				ptr = ptr->_pRight;
+		}
+		return end();
+	}
+
+	size_t size()const {
+		return _size;
+	}
+
+	bool empty()const {
+		return _size == 0;
+	}
+
+	iterator begin() {
+		return iterator(_pHead->_pLeft);
+	}
+	iterator end() {
+		return iterator(_pHead);
+	}
+private:
+	void _InOrder(Node* pRoot)
+	{
+		if (pRoot)
+		{
+			_InOrder(pRoot->_pLeft);
+			std::cout << pRoot->_data << " ";
+			_InOrder(pRoot->_pRight);
+		}
+	}
+	void del(PNode ptr) {
+		if (ptr->_pLeft)
+			del(ptr->_pLeft);
+		if (ptr->_pRight)
+			del(ptr->_pRight);
+		delete ptr;
+	}
 	bool _IsValidRBTree(PNode pRoot, size_t k, const size_t blackCount) {
 		//走到null之后，判断k和black是否相等
 		if (nullptr == pRoot)
@@ -169,19 +317,21 @@ public:
 		return _IsValidRBTree(pRoot->_pLeft, k, blackCount) &&
 			_IsValidRBTree(pRoot->_pRight, k, blackCount);
 	}
-
-private:
 	PNode& GetRoot() {
 		return _pHead->_pParent;
 	}
 	PNode LeftMost() {
 		PNode ptr = GetRoot();
+		if (!ptr)
+			return _pHead;
 		while (ptr->_pLeft)
 			ptr = ptr->_pLeft;
 		return ptr;
 	}
 	PNode RightMost() {
 		PNode ptr = GetRoot();
+		if (!ptr)
+			return _pHead;
 		while (ptr->_pRight)
 			ptr = ptr->_pRight;
 		return ptr;
@@ -238,4 +388,5 @@ private:
 	}
 private:
 	PNode _pHead;    //头结点(根节点的父亲节点)
+	size_t _size;
 };

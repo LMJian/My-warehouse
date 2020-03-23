@@ -112,7 +112,7 @@ public:
 				{
 					if (pCur == pParent->_pRight)//情况三
 					{
-						if (pParent != _pHead)
+						//if (pParent != _pHead)//1111111111111
 						{
 							Left(pParent);
 							swap(pParent, pCur);
@@ -121,7 +121,7 @@ public:
 					//情况二
 					grandfather->_color = RED;
 					pParent->_color = BLACK;
-					if (grandfather != _pHead)
+					//if (grandfather != _pHead)//11111111111111
 						Right(grandfather);
 				}
 			}
@@ -141,7 +141,7 @@ public:
 				{
 					if (pCur == pParent->_pLeft)//情况三
 					{
-						if (pParent != _pHead)
+						//if (pParent != _pHead)//11111111111111
 						{
 							Right(pParent);
 							swap(pParent, pCur);
@@ -150,16 +150,44 @@ public:
 					//情况二
 					grandfather->_color = RED;
 					pParent->_color = BLACK;
-					if (grandfather != _pHead)
+					//if (grandfather != _pHead)//111111111111
 						Left(grandfather);
 				}
 			}
 		}
+		//根节点的颜色可能被修改，将其改回黑色
+		pRoot->_color = BLACK;
+		//更新头结点的左右孩子
+		_pHead->_pLeft = LeftMost();
+		_pHead->_pRight = RightMost();
 		return true;
 	}
-	void Left(PNode root)//左单旋
+	void Left(PNode pParent)//左单旋
 	{
-		PNode pParent = root->_pRight;
+		PNode pPParent = pParent->_pParent;
+		PNode pRight = pParent->_pRight;
+		pParent->_pRight = pRight->_pLeft;
+		if (pRight->_pLeft)
+			pRight->_pLeft->_pParent = pParent;
+		pRight->_pLeft = pParent;
+		pParent->_pParent = pRight;
+		//当pPParent不存在时
+		if (pPParent == _pHead) {
+			//设置pRight为根节点
+			_pHead->_pParent = pRight;
+			pRight->_pParent = _pHead;
+		}
+		else {
+			if (pPParent->_pLeft == pParent) {
+				pPParent->_pLeft = pRight;
+				pRight->_pParent = pPParent;
+			}
+			else {
+				pPParent->_pRight = pRight;
+				pRight->_pParent = pPParent;
+			}
+		}
+		/*PNode pParent = root->_pRight;
 		PNode pCur = pParent->_pLeft;
 		root->_pRight = pCur;
 		if (pCur != nullptr)
@@ -183,11 +211,34 @@ public:
 			}
 		}
 		root->_pParent = pParent;
-		pParent->_pLeft = root;
+		pParent->_pLeft = root;*/
 	}
-	void Right(PNode root)//右单旋
+	void Right(PNode pParent)//右单旋
 	{
-		PNode pParent = root->_pLeft;
+		PNode pPParent = pParent->_pParent;
+		PNode pLeft = pParent->_pLeft;
+		pParent->_pLeft = pLeft->_pRight;
+		if (pLeft->_pRight)
+			pLeft->_pRight->_pParent = pParent;
+		pLeft->_pRight = pParent;
+		pParent->_pParent = pLeft;
+		//当pPParent不存在时
+		if (pPParent == _pHead) {
+			//设置pLeft为根节点
+			_pHead->_pParent = pLeft;
+			pLeft->_pParent = _pHead;
+		}
+		else {
+			if (pPParent->_pLeft == pParent) {
+				pPParent->_pLeft = pLeft;
+				pLeft->_pParent = pPParent;
+			}
+			else {
+				pPParent->_pRight = pLeft;
+				pLeft->_pParent = pPParent;
+			}
+		}
+		/*PNode pParent = root->_pLeft;
 		PNode pCur = pParent->_pRight;
 		root->_pLeft = pCur;
 		if (pCur != nullptr)
@@ -211,7 +262,7 @@ public:
 			}
 		}
 		root->_pParent = pParent;
-		pParent->_pRight = root;
+		pParent->_pRight = root;*/
 	}
 	bool IsValidRBTree()
 	{
@@ -296,8 +347,8 @@ private:
 RBTree<int> tree;
 int main()
 {
-
 	int a[] = { 4, 2, 6, 1, 3, 5, 15, 7, 16, 14 };
+	int b[] = { 16,3,7,11,9,26,18,14,15 };
 
 	for (auto e : a)
 	{
@@ -308,7 +359,7 @@ int main()
 		
 
 	cout << tree.IsValidRBTree() << endl;
-	//cout << "12" << endl;*/
+
 	system("pause");
 	return 0;
 }

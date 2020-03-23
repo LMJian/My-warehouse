@@ -115,6 +115,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Map.hpp" />
     <ClInclude Include="RBTree.hpp" />
   </ItemGroup>
   <ItemGroup>
