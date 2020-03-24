@@ -24,9 +24,6 @@ struct RBTreeNode
 	Color _color;
 };
 
-template<class T, class KorV>
-class RBTree;
-
 template<class T>
 class Iterator {
 public:

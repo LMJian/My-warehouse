@@ -117,6 +117,7 @@
   <ItemGroup>
     <ClInclude Include="Map.hpp" />
     <ClInclude Include="RBTree.hpp" />
+    <ClInclude Include="Set.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />

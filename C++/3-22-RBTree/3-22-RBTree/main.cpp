@@ -1,5 +1,7 @@
 #include<iostream>
 #include"RBTree.hpp"
+#include"Map.hpp"
+#include"Set.hpp"
 using namespace std;
 
 struct KeyOfValue
@@ -36,8 +38,39 @@ void TestRBTree()
 	std::cout << std::endl;
 }
 
+void TestMap()
+{
+	Map<std::string, std::string> m;
+	m.insert(std::pair<std::string, std::string>("2222", "2222"));
+	m.insert(std::make_pair("1111", "1111"));
+	m["0000"] = "0000";
+	std::cout << m.size() << std::endl;
+
+	for (auto e : m)
+	{
+		printf("%s--->%s\n", e.first.c_str(), e.second.c_str());
+	}
+	std::cout << std::endl;
+}
+void TestSet()
+{
+	Set<std::string> m;
+	m.insert("2222");
+	m.insert("1111");
+	m.insert("0000");
+	std::cout << m.size() << std::endl;
+
+	for (auto e : m)
+	{
+		printf("%s\n", e.c_str());
+	}
+	std::cout << std::endl;
+}
+
 int main() {
-	TestRBTree();
+	TestSet();
+	//TestMap();
+	//TestRBTree();
 	system("pause");
 	return 0;
 }
