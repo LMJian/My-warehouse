@@ -14,6 +14,10 @@ void TestUnorderedMAP()
 	m.insert(pair<string, string>("李逵", "铁牛"));
 	m.insert(pair<string, string>("林冲", "豹子头"));
 
+	for (auto& e : m) {
+		cout << e.first << "  " << e.second << endl;
+	}
+
 	m.insert(make_pair("武松", "行者"));
 
 	cout << m.size() << endl;
@@ -27,11 +31,11 @@ void TestUnorderedMAP()
 
 
 	// []：如果key存在，直接返回与key所对应的value
-	cout << m["李逵"] << endl;   // 给一个key，返回与该key对应的value
+	//cout << m["李逵"] << endl;   // 给一个key，返回与该key对应的value
 	cout << m.size() << endl;
 
 	// []: 如果key不存在，<key, 默认value>构建一个键值对，然后将其插入到容器中，返回默认的value
-	cout << m["鲁达"] << endl;
+	//cout << m["鲁达"] << endl;
 	cout << m.size() << endl;
 
 	m.erase("鲁达");
@@ -65,8 +69,8 @@ void TestUnorderedSet()
 	m.clear();
 }
 int main() {
-	//TestUnorderedMAP();
-	TestUnorderedSet();
+	TestUnorderedMAP();
+	//TestUnorderedSet();
 	system("pause");
 	return 0;
 }

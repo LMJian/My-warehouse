@@ -51,7 +51,7 @@ struct Iterator {
 		}
 		else {
 			size_t addr = _ht->HashFunc(_pNode->_data);
-			for (int i = addr + 1; i < _ht->_arr.size(); ++i) {
+			for (size_t i = addr + 1; i < _ht->_arr.size(); ++i) {
 				if (_ht->_arr[i]) {
 					_pNode = _ht->_arr[i];
 					return;
@@ -138,7 +138,7 @@ public:
 		return _size == 0;
 	}
 	iterator begin() {
-		for (int i = 0; i < _arr.size(); ++i) {
+		for (size_t i = 0; i < _arr.size(); ++i) {
 			if (_arr[i]) {
 				return iterator(_arr[i], this);
 			}

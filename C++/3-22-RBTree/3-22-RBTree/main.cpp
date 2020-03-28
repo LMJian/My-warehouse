@@ -48,7 +48,7 @@ void TestMap()
 
 	for (auto e : m)
 	{
-		printf("%s--->%s\n", e.first.c_str(), e.second.c_str());
+		cout << e.first << " " << e.second << endl;
 	}
 	std::cout << std::endl;
 }
@@ -68,8 +68,8 @@ void TestSet()
 }
 
 int main() {
-	TestSet();
-	//TestMap();
+	//TestSet();
+	TestMap();
 	//TestRBTree();
 	system("pause");
 	return 0;

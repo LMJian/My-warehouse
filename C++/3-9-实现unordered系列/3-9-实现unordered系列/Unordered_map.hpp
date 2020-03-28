@@ -44,9 +44,9 @@ public:
 	void swap(const Unordered_map<K,V>& m) {
 		_ht.Swap(m._ht);
 	}
-	V& operator[](const K& k) {
-		return (*(insert(ValueType(k, V())).first)).second;
-	}
+	//V& operator[](const K& k) {
+	//	return (*(insert(ValueType(k, V())).first)).second;
+	//}
 	size_t buck_count()const {
 		return _ht.bucket_count();
 	}

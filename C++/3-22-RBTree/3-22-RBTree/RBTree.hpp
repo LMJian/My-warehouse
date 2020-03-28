@@ -48,6 +48,12 @@ public:
 		Next();
 		return tmp;
 	}
+	bool operator==(Self& t){
+		return _pNode == t._pNode;
+	}
+	bool operator!=(Self& t){
+		return _pNode != t._pNode;
+	}
 	Self& operator--() {
 		Prev();
 		return *this;
@@ -56,12 +62,6 @@ public:
 		Self tmp(_pNode);
 		Prev();
 		return tmp;
-	}
-	bool operator==(const Self& t) const {
-		return _pNode == t._pNode;
-	}
-	bool operator!=(const Self& t) const{
-		return _pNode != t._pNode;
 	}
 private:
 	void Next() {
