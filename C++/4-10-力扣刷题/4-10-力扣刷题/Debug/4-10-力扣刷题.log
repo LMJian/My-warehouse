@@ -1,0 +1,8 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(15): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(19): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(23): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(27): warning C4018: “>=”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(66): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\4-10-力扣刷题\4-10-力扣刷题\main.cpp(75): warning C4018: “<”: 有符号/无符号不匹配
+  4-10-力扣刷题.vcxproj -> C:\Users\Administrator\Desktop\Github\Study-Cpp\C++\4-10-力扣刷题\Debug\4-10-力扣刷题.exe
