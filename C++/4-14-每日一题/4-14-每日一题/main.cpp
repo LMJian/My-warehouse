@@ -16,6 +16,8 @@ int Count(int n) {
 	}
 	return c;
 }
+
+
 int main() {
 	int n;
 	vector<int> arr;
