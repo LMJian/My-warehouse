@@ -45,10 +45,23 @@ private:
 	}
 };
 
+#include<math.h>
+
 int main() {
-	Solution sa;
+	int n;
+	while (cin >> n && n != 0) {
+		int index = 0;
+	LOOP:
+		if (n <= pow(3, index))
+			cout << index << endl;
+		else {
+			++index;
+			goto LOOP;
+		}
+	}
+	/*Solution sa;
 	vector<int> arr{ 9,7,4,10,9,5 };
-	sa.getFirstUnFormedNum(arr, arr.size());
+	sa.getFirstUnFormedNum(arr, arr.size());*/
 
 	system("pause");
 	return 0;
