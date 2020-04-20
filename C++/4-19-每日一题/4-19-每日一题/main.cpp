@@ -43,6 +43,8 @@ int main() {
 	Solution sa;
 	string s = "babad";
 	cout<<sa.longestPalindrome(s)<<endl;
+
+
 	system("pause");
 	return 0;
 }
