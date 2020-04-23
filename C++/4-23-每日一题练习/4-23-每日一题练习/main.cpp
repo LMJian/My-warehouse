@@ -1,4 +1,4 @@
-// write your code here cpp
+/*// write your code here cpp
 #include<iostream>
 using namespace std;
 
@@ -22,6 +22,33 @@ int main() {
 			b = c;
 		}
 		cout << ret << endl;
+	}
+	return 0;
+}*/
+// write your code here cpp
+#include<vector>
+#include<string>
+#include<iostream>
+using namespace std;
+
+int main() {
+	int n;
+	while (cin >> n) {
+		getchar();
+		vector<string> arr;
+		arr.resize(n);
+		for (int i = 0; i < n; ++i)
+			getline(cin, arr[i]);
+		for (int i = 0; i < n - 1; ++i) {
+			if (arr[i].find(' ', 0) != string::npos || arr[i].find(',', 0) != string::npos)
+				cout << "\"" << arr[i] << "\"" << ", ";
+			else
+				cout << arr[i] << ", ";
+		}
+		if (arr[n - 1].find(' ', 0) != string::npos || arr[n - 1].find(',', 0) != string::npos)
+			cout << "\"" << arr[n - 1] << "\"" << endl;
+		else
+			cout << arr[n - 1] << endl;
 	}
 	return 0;
 }
