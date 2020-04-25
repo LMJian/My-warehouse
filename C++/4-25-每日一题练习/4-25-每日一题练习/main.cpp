@@ -32,7 +32,7 @@ int main() {
 		printf("%.2f%\n", ret);
 	}
 	return 0;
-}*/
+}
 
 // write your code here cpp
 #include<iostream>
@@ -42,8 +42,8 @@ using namespace std;
 int main() {
 	string a;
 	string b;
-	while (getline(cin, a), cin >> b) {
-		getchar();
+	while (getline(cin, a)) {
+		getline(cin, b);
 		int index = 0;
 		int end;
 		while (index < a.size()) {
@@ -58,6 +58,8 @@ int main() {
 			}
 			else {
 				end = a.find(',', index);
+				if (end == string::npos)
+					end = a.size();
 				if (end - index == b.size() && a.find(b, index) == index) {
 					//if(a.substr(index,end-index)==b){
 					cout << "Ignore" << endl;
@@ -69,5 +71,40 @@ int main() {
 		if (index >= a.size())
 			cout << "Important!" << endl;
 	}
+	return 0;
+}*/
+#include<iostream>
+#include<vector>
+#include<unordered_set>
+#include<string>
+using namespace std;
+
+class Solution {
+public:
+	bool wordBreak(string s, unordered_set<string> &dict) {
+		if (s.empty())
+			return false;
+		vector<bool> arr(s.size() + 1, false);
+		arr[0] = true;
+		for (int i = 1; i <= s.size(); ++i) {
+			for (int j = i - 1; j >= 0; --j) {
+				if (arr[j] && dict.find(s.substr(j, i - j)) != dict.end()) {
+					arr[i] = true;
+					break;
+				}
+			}
+		}
+		return arr[s.size()];
+	}
+};
+
+int main() {
+	Solution sa;
+	string s = "leetcode";
+	unordered_set<string> set;
+	set.insert("leet");
+	set.insert("code");
+	sa.wordBreak(s, set);
+	system("pause");
 	return 0;
 }
