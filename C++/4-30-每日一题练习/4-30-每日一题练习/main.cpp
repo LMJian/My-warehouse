@@ -4,33 +4,30 @@
 #include<stack>
 using namespace std;
 
-int n;
-vector<int> arr;
-int _max = 0;
-
-void dfs(stack<int>& sta, int index) {
-	if (index == n) {
-		if (sta.size() > _max)
-			_max = sta.size();
-		return;
-	}
-	dfs(sta, index + 1);
-	if (sta.empty() || sta.top() < arr[index]) {
-		sta.push(arr[index]);
-		dfs(sta, index + 1);
-		sta.pop();
-	}
-}
-
 int main() {
+	int n;
+	vector<int> arr;
+	int _max = 0;
 	while (cin >> n) {
 		_max = 0;
-		stack<int> sta;
 		if (n > arr.size())
 			arr.resize(n);
 		for (int i = 0; i < n; ++i)
 			cin >> arr[i];
-		dfs(sta, 0);
+		for (int i = 0; i < n - _max; ++i) {
+			stack<int> sta;
+			for (int j = i; j < n; ++j) {
+				if (sta.empty() || sta.top() < arr[j])
+					sta.push(arr[j]);
+				else {
+					while ((!sta.empty()) && sta.top() >= arr[j])
+						sta.pop();
+					sta.push(arr[j]);
+				}
+				if (_max < sta.size())
+					_max = sta.size();
+			}
+		}
 		cout << _max << endl;
 	}
 	return 0;
