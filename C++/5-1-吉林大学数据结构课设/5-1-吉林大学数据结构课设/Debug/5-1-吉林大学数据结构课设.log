@@ -1,0 +1,5 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\study-cpp\c++\5-1-吉林大学数据结构课设\5-1-吉林大学数据结构课设\main.cpp(66): warning C4018: “<”: 有符号/无符号不匹配
+c:\users\administrator\desktop\github\study-cpp\c++\5-1-吉林大学数据结构课设\5-1-吉林大学数据结构课设\main.cpp(146): warning C4101: “ans”: 未引用的局部变量
+c:\users\administrator\desktop\github\study-cpp\c++\5-1-吉林大学数据结构课设\5-1-吉林大学数据结构课设\main.cpp(188): warning C4018: “<”: 有符号/无符号不匹配
+  5-1-吉林大学数据结构课设.vcxproj -> C:\Users\Administrator\Desktop\Github\Study-Cpp\C++\5-1-吉林大学数据结构课设\Debug\5-1-吉林大学数据结构课设.exe
