@@ -3,7 +3,7 @@
 #include<algorithm>
 using namespace std;
 
-class Solution {
+/*class Solution {
 public:
 	vector<vector<int>> threeSum(vector<int>& nums) {
 		sort(nums.begin(), nums.end());
@@ -33,11 +33,34 @@ public:
 		}
 		return ret;
 	}
+};*/
+
+class Solution {
+public:
+	vector<string> letterCombinations(string digits) {
+		if (digits.empty())
+			return ret;
+		dfs(digits, 0, "");
+		return ret;
+	}
+private:
+	void dfs(string& digits, int index, string str) {
+		if (index == digits.size()) {
+			ret.push_back(str);
+			return;
+		}
+		for (int i = 0; i < arr[digits[index] - '2'].size(); ++i) {
+			dfs(digits, index + 1, str + arr[digits[index] - '2'][i]);
+		}
+	}
+	vector<string> ret;
+	vector<string> arr{ "abc","def","ghi","jkl","mno","pqrs","tuv","wxyz" };
 };
 
 int main() {
 	Solution sa;
-	vector<int> arr{ -1, 0, 1, 2, -1, -4 };
-	sa.threeSum(arr);
+	sa.letterCombinations("23");
+	//vector<int> arr{ -1, 0, 1, 2, -1, -4 };
+	//sa.threeSum(arr);
 	return 0;
 }
