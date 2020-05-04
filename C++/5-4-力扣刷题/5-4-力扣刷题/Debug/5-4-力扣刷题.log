@@ -1,0 +1,10 @@
+﻿  main.cpp
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(32): warning C4244: “=”: 从“double”转换到“__int64”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(35): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(38): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(38): warning C4244: “=”: 从“double”转换到“__int64”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(41): warning C4244: “return”: 从“__int64”转换到“int”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(55): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(57): warning C4244: “参数”: 从“__int64”转换到“int”，可能丢失数据
+c:\users\administrator\desktop\github\study-cpp\c++\5-4-力扣刷题\5-4-力扣刷题\main.cpp(57): warning C4244: “return”: 从“double”转换到“int”，可能丢失数据
+  5-4-力扣刷题.vcxproj -> C:\Users\Administrator\Desktop\Github\Study-Cpp\C++\5-4-力扣刷题\Debug\5-4-力扣刷题.exe
